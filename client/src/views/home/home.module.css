@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "mega";
+    src: url("../../assets/fonts/RobotoSlab-VariableFont_wght.ttf");
+}
+
+.container{
+    background-image: url("../../assets/imgs/wp3983027.jpg");
+    background-size: cover;
+    overflow: hidden;
+    
+}
+
+.filtrado{
+    color: white;
+    position: absolute;
+    margin-top: 13vh;
+    margin-left: 1vw;
+    font-size: 1.5rem;
+}
+.selector{
+    position: absolute;
+    height: 3vh;
+    margin-top: 14vh;
+    margin-left: 6vw;
+}
+.text{
+    position: absolute;
+    color: white;
+    font-size: 2.7rem;
+    right: 41%;
+top: 0;
+margin: 60px 0 0 0; 
+text-shadow: 5px -5px 2px black   
+}
+.selector1{
+    position: absolute;
+    margin-left: 30.3vw;
+    margin-top: 14vh;
+    height: 3vh;
+}   
+.selector2{
+    position: absolute;
+    margin-left: 22.7vw;
+    margin-top: 14vh;
+    height: 3vh;
+}
+.selector3{
+    position: absolute;
+    margin-left: 13vw;
+    margin-top: 14vh;
+    height: 3vh;
+}
+.refresh{
+    position: absolute;
+    width: 2.7vw;
+    height: 5.2vh;
+    margin-left: 39vw;
+    border-radius: 200px;
+}

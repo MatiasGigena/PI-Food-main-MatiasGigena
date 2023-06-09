@@ -1,0 +1,57 @@
+@font-face {
+    font-family: "mega";
+    src: url("../../assets/fonts/RobotoSlab-VariableFont_wght.ttf");
+}
+
+.container{
+  
+    background-image: url("../../assets/imgs/TABLA-2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-bottom: 35vh;
+padding-left: 3vh;
+padding-right: 3vh;
+    margin: 0 70px 20px 70px;
+    border-radius: 15px;
+    width: 50%;
+    transition: all 0.5s;
+    transform: perspective(1000px) rotateX(10deg) translateY(-10px) translateZ(10px);
+}
+.diets{
+    font-family: "mega";
+    text-align: center;
+    
+}
+.health{
+    position: absolute;
+    font-family: "mega";
+    text-align: center;
+    bottom: 0;
+    right: 21%;
+    text-shadow: 1px -1px  rgb(47, 255, 0)  
+}
+.name{
+font-family: "mega";
+text-align:center;
+font-size: 1.2vw;
+text-shadow: 1px -1px  rgb(0, 0, 0)  
+}
+.imagecont{
+    position: absolute;
+    bottom: 20%;
+   left: 2.2%;   
+width: 95%;        
+bottom: 10%;
+border-radius: 15px;
+}
+
+.image{
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.container:hover{
+    transform: perspective(1000px) rotateX(15deg) translateY(-20px) translateZ(30px);
+}

@@ -1,0 +1,25 @@
+.container{
+    font-size: 1.5rem;
+    display: grid;
+    grid-template-rows: 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw;
+    list-style-type: none;
+    position: absolute;
+top: 50vh;
+left: -35;
+padding: 0;
+gap: 1vh;
+}
+.paginado{
+    width: 1.2vw;
+}
+
+.boton{
+    
+    position: absolute;
+ border: 1px solid black;
+ background-color: rgba(0, 0, 0, 0.708);
+ cursor: pointer;
+ border-radius: 5px;
+ width: 2vw;
+ color: white;
+}

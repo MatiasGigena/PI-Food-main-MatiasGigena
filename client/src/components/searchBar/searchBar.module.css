@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "mega";
+    src: url("../../assets/fonts/RobotoSlab-VariableFont_wght.ttf");
+}
+
+.barra{
+    position: absolute;
+    right: 42%;
+    height: 5vh;
+    border-radius: 5px;
+    width: 15vw;
+}
+
+.boton{
+    position: absolute;
+    width: 2.7vw;
+    height: 5.2vh;
+    right: 39%;
+    border-radius: 200px;
+}
