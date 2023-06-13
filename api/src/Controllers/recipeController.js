@@ -1,4 +1,4 @@
-const { Recipe } = require("../db");
+const { Recipe, Diet } = require("../db");
 const { API_KEY } = process.env;
 const axios = require("axios");
 const { Op } = require("sequelize");
@@ -11,6 +11,25 @@ const cleanArray = (arr) =>
       name: elm.title,
       image: elm.image,
       healthScore: elm.healthScore,
+      diets: elm.diets.map((e) => e + "--"),
+      createdInDb: elm.createdInDb,
+    };
+  });
+const cleanArrayID = (arr) =>
+  //Limpiar el array, me quedo con solo lo que necesito.
+  arr.map((elm) => {
+    let step = elm.analyzedInstructions.map((a) => {
+      return a.steps.map((as) => {
+        return `Step ${as.number}: ${as.step}.`;
+      });
+    });
+    return {
+      id: elm.id,
+      name: elm.title,
+      summary: elm.summary.replace(/<[^>]+>/g, ""),
+      image: elm.image,
+      healthScore: elm.healthScore,
+      stepByStep: step[0],
       diets: elm.diets.map((e) => e + "--"),
       createdInDb: elm.createdInDb,
     };
@@ -39,7 +58,15 @@ const searchRecipeByName = async (name) => {
 
 const getAllRecipes = async () => {
   //Traigo todas las recetas, ya sean de la BD o de la API
-  const databaseRecipe = await Recipe.findAll();
+  const databaseRecipe = await Recipe.findAll({
+    include: {
+      model: Diet,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
 
   const apiRecipe = (
     await axios.get(
@@ -51,9 +78,26 @@ const getAllRecipes = async () => {
   return [...databaseRecipe, ...newApi];
 };
 
-const createController = async (name, summary, image) =>
+const createController = async (
+  name,
+  summary,
+  image,
+  stepByStep,
+  healthScore,
+  diets
+) => {
   //Crea una nueva receta en la base de datos
-  await Recipe.create({ name, summary, image });
+  const nRecipe = await Recipe.create({
+    name,
+    summary,
+    image,
+    stepByStep,
+    healthScore,
+  });
+  diets.map(async (diet) => await nRecipe.addDiet(diet));
+  console.log(nRecipe);
+  return nRecipe;
+};
 
 const getRecipeById = async (id, source) => {
   //Traigo la receta obtenida por ID, si la source es API, busco en la API, si es bdd, busca en la base de datos. Eso lo define el ID.
@@ -66,7 +110,7 @@ const getRecipeById = async (id, source) => {
         ).data
       : //Si la source NO es "api", procedo a buscar por primary key en la BD, las recetas por ID
         await Recipe.findByPk(id);
-  return recipe;
+  return cleanArrayID([recipe]);
 };
 module.exports = {
   createController,

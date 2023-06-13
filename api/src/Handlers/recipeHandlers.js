@@ -28,10 +28,17 @@ const recipeByIdHandler = async (req, res) => {
 };
 const recipePostHandler = async (req, res) => {
   //ESTA FUNCION VA A SERVIR PARA POSTEAR NUEVAS RECETAS
-  const { name, summary, image } = req.body;
+  const { name, summary, image, stepByStep, healthScore, diets } = req.body;
   try {
     // Crear nuevas recetas
-    const newRecipe = await createController(name, summary, image);
+    const newRecipe = await createController(
+      name,
+      summary,
+      image,
+      stepByStep,
+      healthScore,
+      diets
+    );
     res.status(200).json(newRecipe);
   } catch (error) {
     res.status(500).send(error.message);

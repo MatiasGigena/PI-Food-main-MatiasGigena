@@ -6,11 +6,11 @@ import {
   filterRecipesDiets,
   filterCreatedInDb,
   orderByName,
+  orderByHealthscore,
 } from "../../redux/actions";
 import style from "./home.module.css";
 import Paginado from "../../components/Paginado/paginado";
 import NavBar from "../../components/navBar/navBar";
-import SocialButton from "../../components/redes/redes";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -56,6 +56,13 @@ const Home = () => {
     e.preventDefault();
     dispatch(getRecipes());
   };
+  const handleO = (e) => {
+    e.preventDefault();
+    dispatch(orderByHealthscore(e.target.value));
+    setCurrentPage(1);
+    //Seteo estado local para que haga efecto el renderizado ordenado
+    setOrden(`Ordenado ${e.target.value}`);
+  };
 
   return (
     <div className={style.container}>
@@ -65,11 +72,14 @@ const Home = () => {
       </button>
       <h1 className={style.filtrado}>Filter: </h1>
       <select onChange={handleOrder} className={style.selector}>
+        <option value="default">Default</option>
         <option value="A">Ascendente</option>
         <option value="D">Descendente</option>
       </select>
-      <select className={style.selector1}>
-        <option value="">Healthscore</option>
+      <select onChange={handleO} className={style.selector1}>
+        <option value="default">Default</option>
+        <option value="A">Menos saludables</option>
+        <option value="D">Mas saludables</option>
       </select>
       <select className={style.selector3} onChange={handleFilterDiets}>
         <option value="default">All</option>
@@ -99,10 +109,6 @@ const Home = () => {
         />
       </div>
       <Cards currentRecipes={currentRecipes} />
-      <SocialButton
-        socialMedia="Github"
-        link="https://github.com/MatiasGigena"
-      />
     </div>
   );
 };

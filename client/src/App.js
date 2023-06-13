@@ -1,21 +1,20 @@
 import "./App.css";
-import { useState, useEffect } from "react";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Routes, Route } from "react-router-dom";
 import Home from "./views/home/home";
-import NavBar from "./components/navBar/navBar";
 import LandingPage from "./views/landingPage/landingPage";
 import LoadingScreen from "./components/LoadingScreen/loadingScreen";
+import CreateRecipe from "./views/create/form";
+import Detail from "./components/Detail/detail";
 
 function App() {
-  const location = useLocation();
-
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/createrecipe" element={<CreateRecipe />} />
         <Route path="/loading" element={<LoadingScreen />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
     </div>
   );

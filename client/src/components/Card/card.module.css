@@ -4,7 +4,8 @@
 }
 
 .container{
-  
+  text-decoration: none;
+  color: black;
     background-image: url("../../assets/imgs/TABLA-2.jpg");
     background-size: cover;
     background-repeat: no-repeat;

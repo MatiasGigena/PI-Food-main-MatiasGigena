@@ -1,0 +1,109 @@
+@font-face {
+    font-family: "mega";
+    src: url("../../assets/fonts/RobotoSlab-VariableFont_wght.ttf");
+}
+
+.container {
+    background: linear-gradient(rgba(5,7,12,0.7), rgba(5,7,12,0.7)),
+    url("../../assets/imgs/wp3510561.jpg");
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form{
+    background: linear-gradient(rgba(5,7,12,0.30), rgba(5,7,12,0.30));
+    position: absolute;
+    display: grid;
+    grid-template-rows: auto auto auto auto ;
+    right: 34%;
+    top: 9%;
+    font-family: "mega";
+    font-size: 1.3em;
+    font-weight: bold;
+    color: black;
+    padding: 1vw;
+    border-radius: 30px;
+  }
+.botonhome{
+    position: absolute;
+    bottom: 2px;
+    font-family: "mega";
+    width: 7vw;
+    height: 2vw;
+    right: 0;
+    font-weight: bold;
+}
+.recetacustom{
+    position: absolute;
+    top: 0;
+    right: 31%;
+    font-family: "mega";
+    color: white;
+}
+
+.submit{
+    position: absolute;
+   bottom:0;
+   right: 40%;
+   width:11vw;
+   font-family: "mega";
+   font-weight: bold;
+   height: 4vh;
+   border: 3px solid black;
+}
+.select{
+    height: 4.3vh;
+    font-family: "mega";
+    font-weight: bold;
+    border: 3px solid black;
+}
+.imagen{
+    position: absolute;
+    height: 9vh;
+    right: 28%;
+    bottom: 12%;
+   transform: scaleY(1)rotate(23deg)
+}
+.texto8{
+    position: absolute;
+    font-family: "mega";
+    font-size: 1.1em;
+    right: 24%;
+    bottom: 2%;
+    width: 10vw;
+    text-align: center;
+    color: white;
+
+}
+.labelPasos{
+    height: 3vh;
+    border: 3px solid black;
+    width: 20vw;
+}
+.texto{
+    color: white;
+    font-family: "mega";
+}
+.texto12{
+    color: white;
+    font-family: "mega";
+}
+.check{
+    border: 1px solid white;
+    margin-top: 0.4vh;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    color: white;
+    box-shadow: 1px -1px 2px white;
+    border-radius: 5px;
+}
+.textBox{
+    font-family: "mega";
+    font-size: 0.85em;
+    
+}

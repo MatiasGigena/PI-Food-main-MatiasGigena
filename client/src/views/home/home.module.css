@@ -7,10 +7,14 @@
     background-image: url("../../assets/imgs/wp3983027.jpg");
     background-size: cover;
     overflow: hidden;
+    min-height: 100vh;
     
 }
-
+.Link{
+    text-decoration: none;
+}
 .filtrado{
+    font-family: "mega";
     color: white;
     position: absolute;
     margin-top: 13vh;
@@ -56,4 +60,11 @@ text-shadow: 5px -5px 2px black
     height: 5.2vh;
     margin-left: 39vw;
     border-radius: 200px;
+    transition: 400ms;
+}
+
+.refresh:hover{
+    background-color: black;
+    color: white;
+    border: 2px solid white;
 }

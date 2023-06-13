@@ -4,11 +4,17 @@ import {
   GET_RECIPE_BY_NAME,
   FILTER_DB,
   ORDER_BY_NAME,
+  POST_RECIPE,
+  GET_DIETS,
+  GET_DETAIL,
+  ORDER_BY_HS,
 } from "./actions";
 
 const initialState = {
   recipes: [],
   aux: [],
+  diets: [],
+  detail: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -27,8 +33,8 @@ const reducer = (state = initialState, action) => {
       if (filterValue === "default") {
         return { ...state, recipes: state.aux };
       }
-
-      let filteredRecipes = state.recipes.filter((recipe) =>
+      const estadoGlobal = [...state.aux];
+      let filteredRecipes = estadoGlobal.filter((recipe) =>
         recipe.diets.includes(filterValue)
       );
       if (filteredRecipes.length === 0) {
@@ -38,18 +44,30 @@ const reducer = (state = initialState, action) => {
 
       return { ...state, recipes: filteredRecipes };
     case FILTER_DB:
+      if (action.payload === "default") {
+        return { ...state, recipes: state.aux };
+      }
+      const estadoGlobel = [...state.aux];
       const createdFilter =
         action.payload === "createdInDb"
-          ? state.recipes.filter((recipe) => recipe.createdInDb)
-          : state.recipes.filter((recipe) => !recipe.createdInDb);
+          ? estadoGlobel.filter((recipe) => recipe.createdInDb)
+          : estadoGlobel.filter((recipe) => !recipe.createdInDb);
+      if (createdFilter.length === 0) {
+        window.alert("No se encontraron recetas de esa proveniencia");
+        return { ...state, recipes: state.aux };
+      }
       return {
         ...state,
         recipes: createdFilter,
       };
     case ORDER_BY_NAME:
+      if (action.payload === "default") {
+        return { ...state, recipes: state.aux };
+      }
+      const estadoGlobx = [...state.recipes];
       let sortedArr =
         action.payload === "A"
-          ? state.recipes.sort(function (a, b) {
+          ? estadoGlobx.sort(function (a, b) {
               if (a.name > b.name) {
                 return 1;
               }
@@ -58,7 +76,7 @@ const reducer = (state = initialState, action) => {
               }
               return 0;
             })
-          : state.recipes.sort(function (a, b) {
+          : estadoGlobx.sort(function (a, b) {
               if (a.name > b.name) {
                 return -1;
               }
@@ -71,6 +89,50 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         recipes: sortedArr,
+      };
+    case POST_RECIPE:
+      return {
+        ...state,
+      };
+    case GET_DIETS:
+      return {
+        ...state,
+        diets: action.payload,
+      };
+    case GET_DETAIL:
+      return {
+        ...state,
+        detail: action.payload,
+      };
+    case ORDER_BY_HS:
+      if (action.payload === "default") {
+        return { ...state, recipes: state.aux };
+      }
+      const estadoGlob = [...state.recipes];
+      let sortArrayHS =
+        action.payload === "A"
+          ? estadoGlob.sort(function (a, b) {
+              if (a.healthScore > b.healthScore) {
+                return 1;
+              }
+              if (b.healthScore > a.healthScore) {
+                return -1;
+              }
+              return 0;
+            })
+          : estadoGlob.sort(function (a, b) {
+              if (a.healthScore > b.healthScore) {
+                return -1;
+              }
+              if (b.healthScore > a.healthScore) {
+                return 1;
+              }
+              return 0;
+            });
+
+      return {
+        ...state,
+        recipes: sortArrayHS,
       };
     default:
       return state;

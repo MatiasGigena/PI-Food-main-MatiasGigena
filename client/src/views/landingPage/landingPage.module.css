@@ -5,7 +5,6 @@
 .LandingPage{
     background-image: url("../../assets/imgs/ingredientes-espacio-copia-fideos.jpg");
     background-size: cover;
-    border: 1px dotted red; 
     width: 100%;
     height: 100%;
     position: absolute;

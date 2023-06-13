@@ -4,7 +4,7 @@
     grid-template-rows: 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw;
     list-style-type: none;
     position: absolute;
-top: 50vh;
+top: 29vh;
 left: -35;
 padding: 0;
 gap: 1vh;
@@ -14,12 +14,20 @@ gap: 1vh;
 }
 
 .boton{
-    
     position: absolute;
- border: 1px solid black;
- background-color: rgba(0, 0, 0, 0.708);
+
+ background-color:  white;
  cursor: pointer;
  border-radius: 5px;
  width: 2vw;
- color: white;
+ color: black;
+ text-align: center;
+ box-shadow: 1px -1px 6px white;
+ transition: 400ms;
+}
+
+.boton:hover{
+    background-color: black;
+    color: white;
+    border: 2px solid white;
 }

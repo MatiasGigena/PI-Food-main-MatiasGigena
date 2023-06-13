@@ -9,12 +9,25 @@
     height: 5vh;
     border-radius: 5px;
     width: 15vw;
+    transition: 400ms;
 }
 
 .boton{
     position: absolute;
     width: 2.7vw;
     height: 5.2vh;
-    right: 39%;
+    right: 38.8%;
     border-radius: 200px;
+    transition: 400ms;
+}
+
+.barra:hover{
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+
+.boton:hover{
+    background-color: black;
+    border: 2px solid white;
 }

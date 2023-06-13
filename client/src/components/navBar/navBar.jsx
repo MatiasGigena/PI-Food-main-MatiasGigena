@@ -1,13 +1,15 @@
-import style from "./navBarModule.css";
 import SearchBar from "../searchBar/searchBar";
-import CreateRecipe from "../create/form";
+import Button from "../Button/button";
+import SocialButton from "../redes/redes";
 const NavBar = () => {
   return (
-    <div className={style.container}>
+    <div>
       <SearchBar />
-      <div className={style.post}>
-        <CreateRecipe />
-      </div>
+      <Button />
+      <SocialButton
+        socialMedia="Github"
+        link="https://github.com/MatiasGigena"
+      />
     </div>
   );
 };

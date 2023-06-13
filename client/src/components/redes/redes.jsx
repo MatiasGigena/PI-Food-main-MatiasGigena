@@ -19,7 +19,7 @@ const SocialButton = ({ socialMedia, link }) => {
             fill="white"
           ></path>
         </svg>
-        <p className={style.text}>Click me</p>
+        <p className={style.text}>Github</p>
       </button>
     </div>
   );

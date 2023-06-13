@@ -6,7 +6,7 @@ const cleanArray = (arr) =>
   arr.map((e) => {
     return {
       //Eliminar guiones y espacios en blanco de las dietas
-      diets: e.diets.map((diet) => diet.trim().replace(/-+$/, "")),
+      diets: e.diets.map((diet) => diet + "--"),
     };
   });
 
@@ -24,11 +24,12 @@ const getAllDiets = async () => {
   newApi.forEach((item) => {
     item.diets.forEach((diet) => {
       dietNames.add(diet);
+      dietNames.add("vegetarian--");
     });
   });
 
   // Convertir el conjunto de nombres de dietas a un array
-  const uniqueDietNames = [...dietNames, "vegetarian"];
+  const uniqueDietNames = [...dietNames];
   console.log(uniqueDietNames);
 
   // Guardar los nombres de dietas en la base de datos usando Sequelize
@@ -38,7 +39,8 @@ const getAllDiets = async () => {
     });
   });
   const databaseDiets = await Diet.findAll();
-  return [...databaseDiets];
+  console.log(databaseDiets);
+  return databaseDiets;
 };
 
 module.exports = {
