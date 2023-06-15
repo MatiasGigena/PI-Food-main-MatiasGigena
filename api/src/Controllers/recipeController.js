@@ -38,7 +38,14 @@ const cleanArrayID = (arr) =>
 const searchRecipeByName = async (name) => {
   // Buscar por query, si no encuentra en la BD, busca en la api con un filter
   const databaseRecipe = await Recipe.findAll({
-    where: { name: { [Op.like]: `%${name}%` } },
+    where: { name: { [Op.iLike]: `%${name}%` } },
+    include: {
+      model: Diet,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
   });
 
   const apiRecipe = (
@@ -95,7 +102,6 @@ const createController = async (
     healthScore,
   });
   diets.map(async (diet) => await nRecipe.addDiet(diet));
-  console.log(nRecipe);
   return nRecipe;
 };
 
@@ -110,7 +116,7 @@ const getRecipeById = async (id, source) => {
         ).data
       : //Si la source NO es "api", procedo a buscar por primary key en la BD, las recetas por ID
         await Recipe.findByPk(id);
-  return cleanArrayID([recipe]);
+  return source === "api" ? cleanArrayID([recipe]) : recipe;
 };
 module.exports = {
   createController,

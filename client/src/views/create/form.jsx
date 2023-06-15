@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipe } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import style from "./form.module.css";
+import validate from "../../components/validate/validation";
 const CreateRecipe = () => {
   const dispatch = useDispatch();
+
   const diets = useSelector((state) => state.diets);
   const [input, setInput] = useState({
     name: "",
@@ -15,9 +17,18 @@ const CreateRecipe = () => {
     diets: [],
   });
 
+  const [errores, setErrores] = useState({
+    name: "",
+    summary: "",
+    image: "",
+    stepByStep: "",
+    healthScore: "",
+    diets: [],
+  });
+
   useEffect(() => {
     dispatch(getDiets());
-  }, [dispatch]);
+  }, []);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -25,6 +36,12 @@ const CreateRecipe = () => {
       ...input,
       [e.target.name]: e.target.value,
     });
+    setErrores(
+      validate({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
   };
   const handleCheck = (e) => {
     if (e.target.checked) {
@@ -36,11 +53,10 @@ const CreateRecipe = () => {
       });
     }
   };
-  console.log(input);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postRecipe(input));
-    window.alert("Receta creada!");
+    alert("Receta creada!");
     setInput({
       name: "",
       summary: "",
@@ -56,7 +72,7 @@ const CreateRecipe = () => {
   const handleMouseLeave = (event) => {
     event.target.placeholder = "Añadir. . .";
   };
-
+  console.log(input);
   return (
     <div className={style.container}>
       <Link to="/home">
@@ -76,6 +92,7 @@ const CreateRecipe = () => {
             onClick={handleInputChange}
             onMouseLeave={handleMouseLeave}
           />
+          {errores.name && <p className={style.error}>{errores.name}</p>}
           <label className={style.texto}>Resumen: </label>
           <input
             placeholder=" Añadir. . ."
@@ -87,6 +104,7 @@ const CreateRecipe = () => {
             onClick={handleInputChange}
             onMouseLeave={handleMouseLeave}
           />
+
           <label className={style.texto}>Pasos: </label>
           <input
             placeholder=" Añadir. . ."
@@ -109,6 +127,9 @@ const CreateRecipe = () => {
             onClick={handleInputChange}
             onMouseLeave={handleMouseLeave}
           />
+          {errores.healthScore && (
+            <p className={style.error}>{errores.healthScore}</p>
+          )}
           <label className={style.texto}>Imagen: </label>
           <input
             placeholder=" Añadir. . ."
@@ -120,8 +141,8 @@ const CreateRecipe = () => {
             onClick={handleInputChange}
             onMouseLeave={handleMouseLeave}
           />
+          {errores.image && <p className={style.error}>{errores.image}</p>}
           <label className={style.texto12}>Diets: </label>
-          {/* <select onChange={handleSelect} className={style.select}> */}
           {diets.map((e) => (
             <div className={style.check}>
               <label className={style.textBox}>{e.name}</label>

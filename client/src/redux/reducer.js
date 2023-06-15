@@ -33,14 +33,14 @@ const reducer = (state = initialState, action) => {
       if (filterValue === "default") {
         return { ...state, recipes: state.aux };
       }
-      const estadoGlobal = [...state.aux];
+      const estadoGlobal = [...state.recipes];
       let filteredRecipes = estadoGlobal.filter((recipe) =>
         recipe.diets.includes(filterValue)
       );
-      if (filteredRecipes.length === 0) {
-        window.alert("No hay recetas con todas estas dietas");
-        filteredRecipes = state.aux;
-      }
+      // if (filteredRecipes.length === 0) {
+      //   window.alert("No hay recetas con todas estas dietas");
+      //   filteredRecipes = state.aux;
+      // }
 
       return { ...state, recipes: filteredRecipes };
     case FILTER_DB:

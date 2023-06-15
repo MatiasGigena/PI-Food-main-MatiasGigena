@@ -25,7 +25,8 @@
     position: absolute;
     height: 3vh;
     margin-top: 14vh;
-    margin-left: 6vw;
+    margin-left: 5.8vw;
+    border-radius: 5px;
 }
 .text{
     position: absolute;
@@ -38,21 +39,24 @@ text-shadow: 5px -5px 2px black
 }
 .selector1{
     position: absolute;
-    margin-left: 30.3vw;
+    margin-left: 29vw;
     margin-top: 14vh;
     height: 3vh;
+    border-radius: 5px;
 }   
 .selector2{
     position: absolute;
-    margin-left: 22.7vw;
+    margin-left: 21vw;
     margin-top: 14vh;
     height: 3vh;
+    border-radius: 5px;
 }
 .selector3{
     position: absolute;
-    margin-left: 13vw;
+    margin-left: 11vw;
     margin-top: 14vh;
     height: 3vh;
+    border-radius: 5px;
 }
 .refresh{
     position: absolute;
@@ -64,6 +68,26 @@ text-shadow: 5px -5px 2px black
 }
 
 .refresh:hover{
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+.selector:hover{
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+.selector1:hover{
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+.selector2:hover{
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+.selector3:hover{
     background-color: black;
     color: white;
     border: 2px solid white;

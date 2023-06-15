@@ -39,17 +39,20 @@ const Home = () => {
   const handleFilterDiets = (e) => {
     //Manejo el filtro de dietas
     dispatch(filterRecipesDiets(e.target.value));
+    setCurrentPage(1);
+    setOrden(`Ordenado ${e.target.value}`);
   };
   const handleFilterCreated = (e) => {
     //Manejo el filtro de creados en DB
     dispatch(filterCreatedInDb(e.target.value));
+    setCurrentPage(1);
+    setOrden(`Ordenado ${e.target.value}`);
   };
   const handleOrder = (e) => {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
     //Seteo que cuando se ordene la pagina sea 1 === la primera
     setCurrentPage(1);
-    //Seteo estado local para que haga efecto el renderizado ordenado
     setOrden(`Ordenado ${e.target.value}`);
   };
   const handleClick = (e) => {
@@ -73,8 +76,8 @@ const Home = () => {
       <h1 className={style.filtrado}>Filter: </h1>
       <select onChange={handleOrder} className={style.selector}>
         <option value="default">Default</option>
-        <option value="A">Ascendente</option>
-        <option value="D">Descendente</option>
+        <option value="A">A-Z</option>
+        <option value="D">Z-A</option>
       </select>
       <select onChange={handleO} className={style.selector1}>
         <option value="default">Default</option>

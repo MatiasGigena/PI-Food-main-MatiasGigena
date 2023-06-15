@@ -1,6 +1,5 @@
 const {
   getRecipeById,
-  recipeController,
   createController,
   searchRecipeByName,
   getAllRecipes,
@@ -24,6 +23,7 @@ const recipeByIdHandler = async (req, res) => {
     res.status(200).json(recipeId);
   } catch (error) {
     res.status(500).send(error.message);
+    console.log(error);
   }
 };
 const recipePostHandler = async (req, res) => {
