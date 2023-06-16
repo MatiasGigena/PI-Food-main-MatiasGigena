@@ -6,12 +6,15 @@ const {
 } = require("../Controllers/recipeController");
 
 const recipeHandler = async (req, res) => {
-  //ESTA FUNCION VA A BUSCAR POR QUERY y SINO, MUESTRA TODAS LAS RECETAS
   const { name } = req.query;
-  //Ternario, si no se busco una receta por query, mostra todas las recetas
-  const results = name ? await searchRecipeByName(name) : await getAllRecipes();
-
-  res.status(200).json(results);
+  try {
+    const results = name
+      ? await searchRecipeByName(name)
+      : await getAllRecipes();
+    res.status(200).json(results);
+  } catch (error) {
+    res.status(404).json({ error: "No se han podido renderizar las receta/s" });
+  }
 };
 const recipeByIdHandler = async (req, res) => {
   //ESTA FUNCION VA A BUSCAR POR ID
@@ -22,8 +25,7 @@ const recipeByIdHandler = async (req, res) => {
     const recipeId = await getRecipeById(id, source);
     res.status(200).json(recipeId);
   } catch (error) {
-    res.status(500).send(error.message);
-    console.log(error);
+    res.status(500).json({ error: "No existe la receta buscada por ID" });
   }
 };
 const recipePostHandler = async (req, res) => {
@@ -31,6 +33,7 @@ const recipePostHandler = async (req, res) => {
   const { name, summary, image, stepByStep, healthScore, diets } = req.body;
   try {
     // Crear nuevas recetas
+    if (!name) res.status(400).json({ error: "Missing name" });
     const newRecipe = await createController(
       name,
       summary,
@@ -41,7 +44,7 @@ const recipePostHandler = async (req, res) => {
     );
     res.status(200).json(newRecipe);
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json({ error: "No se ha podido crear tu receta" });
   }
 };
 module.exports = {

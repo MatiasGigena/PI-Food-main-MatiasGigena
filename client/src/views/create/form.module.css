@@ -114,3 +114,17 @@
     font-family: "mega";
     font-size: 0.5em;
 }
+.loding{
+   position: absolute;
+   bottom: 0;
+   right: 50%;
+    
+}
+
+.errores2{
+    color: red;
+    bottom: 0;
+    position: absolute;
+    left: 45%;
+    margin-bottom: 1.2vh;
+}

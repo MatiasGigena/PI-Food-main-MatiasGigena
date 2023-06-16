@@ -4,9 +4,10 @@ import { getDiets, postRecipe } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import style from "./form.module.css";
 import validate from "../../components/validate/validation";
+import LoadingScreen from "../../components/LoadingScreen/loadingScreen";
 const CreateRecipe = () => {
   const dispatch = useDispatch();
-
+  // const [reject, setReject] = useState(true);
   const diets = useSelector((state) => state.diets);
   const [input, setInput] = useState({
     name: "",
@@ -28,7 +29,7 @@ const CreateRecipe = () => {
 
   useEffect(() => {
     dispatch(getDiets());
-  }, []);
+  }, [dispatch]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -53,6 +54,7 @@ const CreateRecipe = () => {
       });
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postRecipe(input));
@@ -72,7 +74,7 @@ const CreateRecipe = () => {
   const handleMouseLeave = (event) => {
     event.target.placeholder = "Añadir. . .";
   };
-  console.log(input);
+  console.log(diets);
   return (
     <div className={style.container}>
       <Link to="/home">
@@ -143,20 +145,36 @@ const CreateRecipe = () => {
           />
           {errores.image && <p className={style.error}>{errores.image}</p>}
           <label className={style.texto12}>Diets: </label>
-          {diets.map((e) => (
-            <div className={style.check}>
-              <label className={style.textBox}>{e.name}</label>
-              <input
-                type="checkbox"
-                onChange={handleCheck}
-                value={e.id}
-              ></input>
+          {diets.length < 10 ? (
+            <div className={style.loding}>
+              <LoadingScreen />
             </div>
-          ))}
+          ) : (
+            diets.map((e) => (
+              <div className={style.check}>
+                <label className={style.textBox}>{e.name}</label>
+                <input
+                  type="checkbox"
+                  onChange={handleCheck}
+                  value={e.id}
+                ></input>
+              </div>
+            ))
+          )}
         </div>
-        <button className={style.submit} type="submit">
-          Añadir receta
-        </button>
+
+        {errores && (errores.name || errores.healthScore || errores.image) ? (
+          <h1 className={style.errores2}>Corregi tus errores</h1>
+        ) : errores &&
+          (input.name === "" ||
+            input.healthScore === "" ||
+            input.image === "") ? (
+          <h1 className={style.errores2}>Completa los campos</h1>
+        ) : (
+          <button className={style.submit} type="submit">
+            Añadir receta
+          </button>
+        )}
       </form>
     </div>
   );

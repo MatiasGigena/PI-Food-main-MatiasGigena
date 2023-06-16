@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRecipeByName } from "../../redux/actions";
 
-const SearchBar = () => {
+const SearchBar = ({ setCurrentPage }) => {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
 
@@ -12,7 +12,7 @@ const SearchBar = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(getRecipeByName(name));
+    dispatch(getRecipeByName(name)).then(() => setCurrentPage(1));
   };
 
   const handleClick = (e) => {

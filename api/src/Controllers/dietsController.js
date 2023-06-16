@@ -30,7 +30,6 @@ const getAllDiets = async () => {
 
   // Convertir el conjunto de nombres de dietas a un array
   const uniqueDietNames = [...dietNames];
-  console.log(uniqueDietNames);
 
   // Guardar los nombres de dietas en la base de datos usando Sequelize
   uniqueDietNames.forEach(async (dietName) => {
@@ -39,7 +38,6 @@ const getAllDiets = async () => {
     });
   });
   const databaseDiets = await Diet.findAll();
-  console.log(databaseDiets);
   return databaseDiets;
 };
 

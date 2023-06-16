@@ -12,8 +12,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transform: rotateX(30deg) rotateZ(45deg);
-  width: 14em;
-  height: 14em;
+  width: 0.5em;
+  height: 0.5em;
 }
 
 .pl, .dot {

@@ -17,7 +17,6 @@ const Paginado = ({ recipesPerPage, recipes, paginado }) => {
                 <a className={style.boton} onClick={() => paginado(number)}>
                   {number}
                 </a>
-                ;
               </li>
             ))}
         </ul>

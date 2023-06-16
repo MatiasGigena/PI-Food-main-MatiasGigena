@@ -12,6 +12,7 @@ import {
 
 const initialState = {
   recipes: [],
+  recipesFiltered: [],
   aux: [],
   diets: [],
   detail: [],
@@ -25,6 +26,11 @@ const reducer = (state = initialState, action) => {
         recipes: action.payload,
         aux: action.payload,
       };
+    case GET_DIETS:
+      return {
+        ...state,
+        diets: action.payload,
+      };
     case GET_RECIPE_BY_NAME:
       return { ...state, recipes: action.payload };
     case FILTER:
@@ -37,12 +43,12 @@ const reducer = (state = initialState, action) => {
       let filteredRecipes = estadoGlobal.filter((recipe) =>
         recipe.diets.includes(filterValue)
       );
-      // if (filteredRecipes.length === 0) {
-      //   window.alert("No hay recetas con todas estas dietas");
-      //   filteredRecipes = state.aux;
-      // }
 
-      return { ...state, recipes: filteredRecipes };
+      return {
+        ...state,
+        recipesFiltered: filteredRecipes,
+        recipes: filteredRecipes,
+      };
     case FILTER_DB:
       if (action.payload === "default") {
         return { ...state, recipes: state.aux };
@@ -93,11 +99,6 @@ const reducer = (state = initialState, action) => {
     case POST_RECIPE:
       return {
         ...state,
-      };
-    case GET_DIETS:
-      return {
-        ...state,
-        diets: action.payload,
       };
     case GET_DETAIL:
       return {

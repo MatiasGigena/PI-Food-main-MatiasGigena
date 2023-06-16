@@ -66,10 +66,10 @@ const Home = () => {
     //Seteo estado local para que haga efecto el renderizado ordenado
     setOrden(`Ordenado ${e.target.value}`);
   };
-
+  console.log(recipes);
   return (
     <div className={style.container}>
-      <NavBar />
+      <NavBar setCurrentPage={setCurrentPage} />
       <button onClick={handleClick} className={style.refresh}>
         ⟳
       </button>
