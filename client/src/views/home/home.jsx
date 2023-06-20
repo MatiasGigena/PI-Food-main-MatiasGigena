@@ -70,8 +70,8 @@ const Home = () => {
       <h1 className={style.filtrado}>Filter: </h1>
       <select onChange={handleOrder} className={style.selector}>
         <option value="default">Default</option>
-        <option value="A">A-Z</option>
-        <option value="D">Z-A</option>
+        <option value="A">Z-A</option>
+        <option value="D">A-Z</option>
       </select>
       <select onChange={handleO} className={style.selector1}>
         <option value="default">Default</option>
