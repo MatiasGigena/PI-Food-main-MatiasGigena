@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getDetail } from "../../redux/actions";
-import LoadingScreen from "../LoadingScreen/loadingScreen";
 import style from "./detail.module.css";
 
 const Detail = () => {
@@ -42,7 +41,11 @@ const Detail = () => {
         </div>
       );
     } else {
-      return <LoadingScreen />;
+      return (
+        <div className={style.loading}>
+          <h1>...Loading</h1>
+        </div>
+      );
     }
   };
 

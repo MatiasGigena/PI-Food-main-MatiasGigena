@@ -1,9 +1,15 @@
 import style from "./paginado.module.css";
-//recibe por props las variables que necesito
-const Paginado = ({ recipesPerPage, recipes, paginado }) => {
-  //declaro todas las paginas
+
+const Paginado = ({ currentPage, recipesPerPage, recipes, paginado }) => {
   const pageNumbers = [];
-  //Itero todas las recetas dividido las recetas por pagina y pusheo al array de pageNumbers, donde estan todos los numeros
+  const goToNextPage = () => {
+    paginado(currentPage + 1);
+  };
+
+  const goToPrevPage = () => {
+    paginado(currentPage - 1);
+  };
+  //Itero todas las recetas dividido las recetas por pagina y pusheo al array de pageNumbers, los numeros de cada pagina
   for (let index = 1; index <= Math.ceil(recipes / recipesPerPage); index++) {
     pageNumbers.push(index);
   }
@@ -11,14 +17,37 @@ const Paginado = ({ recipesPerPage, recipes, paginado }) => {
     <div>
       <nav>
         <ul className={style.container}>
+          <li className={style.paginado}>
+            <button
+              className={style.botonPrev}
+              onClick={goToPrevPage}
+              disabled={currentPage === 1}
+            >
+              ᴧ
+            </button>
+          </li>
           {pageNumbers &&
             pageNumbers.map((number) => (
               <li className={style.paginado} key={number}>
-                <a className={style.boton} onClick={() => paginado(number)}>
+                <a
+                  className={`${style.boton} ${
+                    currentPage === number ? style.currentPage : ""
+                  }`}
+                  onClick={() => paginado(number)}
+                >
                   {number}
                 </a>
               </li>
             ))}
+          <li className={style.paginado}>
+            <button
+              className={style.botonSig}
+              onClick={goToNextPage}
+              disabled={currentPage === Math.ceil(recipes / recipesPerPage)}
+            >
+              V
+            </button>
+          </li>
         </ul>
       </nav>
     </div>

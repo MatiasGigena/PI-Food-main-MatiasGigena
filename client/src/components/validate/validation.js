@@ -16,9 +16,10 @@ const validate = (input) => {
 
   if (
     input.image &&
-    !/^((https?|ftp):\/\/[^\s\/$.?#].[^\s]*)$/.test(input.image)
+    !/^((https?|ftp):\/\/[^\s\/$.?#].[^\s]*)\.jpg$/.test(input.image)
   ) {
-    errores.image = "La imagen debe estar en formato de URL";
+    errores.image =
+      "La imagen debe estar en formato de URL y ser un archivo JPG";
   }
 
   return errores;

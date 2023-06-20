@@ -27,16 +27,17 @@ const getAllDiets = async () => {
       dietNames.add("vegetarian--");
     });
   });
-
+  console.log(dietNames);
   // Convertir el conjunto de nombres de dietas a un array
   const uniqueDietNames = [...dietNames];
-
+  console.log(uniqueDietNames);
   // Guardar los nombres de dietas en la base de datos usando Sequelize
-  uniqueDietNames.forEach(async (dietName) => {
+  for (const dietName of uniqueDietNames) {
     await Diet.findOrCreate({
       where: { name: dietName },
     });
-  });
+  }
+
   const databaseDiets = await Diet.findAll();
   return databaseDiets;
 };

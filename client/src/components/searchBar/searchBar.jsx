@@ -12,7 +12,9 @@ const SearchBar = ({ setCurrentPage }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(getRecipeByName(name)).then(() => setCurrentPage(1));
+    dispatch(getRecipeByName(name))
+      .then(() => setCurrentPage(1))
+      .then(() => setName(""));
   };
 
   const handleClick = (e) => {
@@ -30,6 +32,7 @@ const SearchBar = ({ setCurrentPage }) => {
         onChange={handleChange}
         onClick={handleClick}
         onMouseLeave={handleLeave}
+        value={name}
       />
       <button type="submit" onClick={handleSubmit} className={style.boton}>
         🔎

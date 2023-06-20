@@ -14,7 +14,6 @@ import NavBar from "../../components/navBar/navBar";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const [orden, setOrden] = useState("");
   const recipes = useSelector((state) => state.recipes);
   //Declaro estado con pagina y modificador d pagina
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,20 +39,17 @@ const Home = () => {
     //Manejo el filtro de dietas
     dispatch(filterRecipesDiets(e.target.value));
     setCurrentPage(1);
-    setOrden(`Ordenado ${e.target.value}`);
   };
   const handleFilterCreated = (e) => {
     //Manejo el filtro de creados en DB
     dispatch(filterCreatedInDb(e.target.value));
     setCurrentPage(1);
-    setOrden(`Ordenado ${e.target.value}`);
   };
   const handleOrder = (e) => {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
     //Seteo que cuando se ordene la pagina sea 1 === la primera
     setCurrentPage(1);
-    setOrden(`Ordenado ${e.target.value}`);
   };
   const handleClick = (e) => {
     e.preventDefault();
@@ -63,8 +59,6 @@ const Home = () => {
     e.preventDefault();
     dispatch(orderByHealthscore(e.target.value));
     setCurrentPage(1);
-    //Seteo estado local para que haga efecto el renderizado ordenado
-    setOrden(`Ordenado ${e.target.value}`);
   };
   console.log(recipes);
   return (
@@ -81,8 +75,8 @@ const Home = () => {
       </select>
       <select onChange={handleO} className={style.selector1}>
         <option value="default">Default</option>
-        <option value="A">Menos saludables</option>
-        <option value="D">Mas saludables</option>
+        <option value="D"> + Healthier</option>
+        <option value="A"> - Healthier</option>
       </select>
       <select className={style.selector3} onChange={handleFilterDiets}>
         <option value="default">All</option>
@@ -93,15 +87,17 @@ const Home = () => {
         <option value="pescatarian--">pescatarian</option>
         <option value="paleolithic--">paleolithic</option>
         <option value="primal--">primal</option>
-        <option value="whole 30--">whole 30</option>
+        <option value="vegetarian--">vegetarian</option>
+        <option value="fodmap friendly--">fodkmap friendly</option>
+        <option value="ketogenic--">ketogenic</option>
       </select>
       <select
         className={style.selector2}
         onChange={(e) => handleFilterCreated(e)}
       >
         <option value="default">All</option>
-        <option value="createdInDb">Created in DB</option>
-        <option value="api">Created in API</option>
+        <option value="createdInDb">Created</option>
+        <option value="api">Existing</option>
       </select>
       <h1 className={style.text}>Food addicts</h1>
       <div className={style.paginado}>
@@ -109,6 +105,7 @@ const Home = () => {
           recipesPerPage={recipesPerPage}
           recipes={recipes.length}
           paginado={paginado}
+          currentPage={currentPage}
         />
       </div>
       <Cards currentRecipes={currentRecipes} />

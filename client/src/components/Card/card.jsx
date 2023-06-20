@@ -8,7 +8,8 @@ const Card = (props) => {
         <p className={style.name}>Name: {props.name}</p>
         <div className={style.dietscont}>
           <p className={style.diets}>
-            Diet types: {props.diets.map((e) => (e.name ? e.name : e))}
+            Diet types:
+            {props.diets && props.diets.map((e) => (e.name ? e.name : e))}
           </p>
         </div>
         <p className={style.health}>Healthscore: {props.healthScore}%</p>

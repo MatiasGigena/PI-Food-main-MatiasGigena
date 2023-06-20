@@ -4,7 +4,6 @@ import { getDiets, postRecipe } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import style from "./form.module.css";
 import validate from "../../components/validate/validation";
-import LoadingScreen from "../../components/LoadingScreen/loadingScreen";
 const CreateRecipe = () => {
   const dispatch = useDispatch();
   // const [reject, setReject] = useState(true);
@@ -54,7 +53,7 @@ const CreateRecipe = () => {
       });
     }
   };
-
+  console.log(input);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postRecipe(input));
@@ -71,8 +70,21 @@ const CreateRecipe = () => {
   const handleInputChange = (event) => {
     event.target.placeholder = "";
   };
-  const handleMouseLeave = (event) => {
-    event.target.placeholder = "Añadir. . .";
+  const handleMouseLeave2 = (event) => {
+    event.target.placeholder = " Add a name to the recipe . . .";
+  };
+  const handleMouseLeave3 = (event) => {
+    event.target.placeholder = " Add a detailed description. . .";
+  };
+  const handleMouseLeave4 = (event) => {
+    event.target.placeholder = " Add a step by step preparation. . .";
+  };
+  const handleMouseLeave5 = (event) => {
+    event.target.placeholder =
+      " Add a 1-100 rating on how healthier it is. . .";
+  };
+  const handleMouseLeave6 = (event) => {
+    event.target.placeholder = " Add an Image by URL on JPG. . .";
   };
   console.log(diets);
   return (
@@ -80,74 +92,74 @@ const CreateRecipe = () => {
       <Link to="/home">
         <button className={style.botonhome}>Home</button>
       </Link>
-      <h1 className={style.recetacustom}>Añade tu receta personalizada!</h1>
+      <h1 className={style.recetacustom}>Add a custom recipe!</h1>
       <form onSubmit={handleSubmit}>
         <div className={style.form}>
-          <label className={style.texto}>Nombre: </label>
+          <label className={style.texto}>Name: </label>
           <input
-            placeholder=" Añadir. . ."
+            placeholder=" Add a name to the recipe . . ."
             className={style.labelPasos}
             type="text"
             value={input.name}
             onChange={handleChange}
             name="name"
             onClick={handleInputChange}
-            onMouseLeave={handleMouseLeave}
+            onMouseLeave={handleMouseLeave2}
           />
           {errores.name && <p className={style.error}>{errores.name}</p>}
-          <label className={style.texto}>Resumen: </label>
+          <label className={style.texto}>Summary: </label>
           <input
-            placeholder=" Añadir. . ."
+            placeholder=" Add a detailed description. . ."
             className={style.labelPasos}
             type="text"
             value={input.summary}
             onChange={handleChange}
             name="summary"
             onClick={handleInputChange}
-            onMouseLeave={handleMouseLeave}
+            onMouseLeave={handleMouseLeave3}
           />
 
-          <label className={style.texto}>Pasos: </label>
+          <label className={style.texto}>Steps: </label>
           <input
-            placeholder=" Añadir. . ."
+            placeholder=" Add a step by step preparation. . ."
             className={style.labelPasos}
             type="text"
             value={input.stepByStep}
             onChange={handleChange}
             name="stepByStep"
             onClick={handleInputChange}
-            onMouseLeave={handleMouseLeave}
+            onMouseLeave={handleMouseLeave4}
           />
           <label className={style.texto}>Healthscore: </label>
           <input
-            placeholder=" Añadir. . ."
+            placeholder=" Add a 1-100 rating on how healthier it is. . ."
             className={style.labelPasos}
             type="text"
             value={input.healthScore}
             onChange={handleChange}
             name="healthScore"
             onClick={handleInputChange}
-            onMouseLeave={handleMouseLeave}
+            onMouseLeave={handleMouseLeave5}
           />
           {errores.healthScore && (
             <p className={style.error}>{errores.healthScore}</p>
           )}
-          <label className={style.texto}>Imagen: </label>
+          <label className={style.texto}>Image: </label>
           <input
-            placeholder=" Añadir. . ."
+            placeholder=" Add an Image by URL on JPG. . ."
             className={style.labelPasos}
             type="text"
             value={input.image}
             onChange={handleChange}
             name="image"
             onClick={handleInputChange}
-            onMouseLeave={handleMouseLeave}
+            onMouseLeave={handleMouseLeave6}
           />
           {errores.image && <p className={style.error}>{errores.image}</p>}
           <label className={style.texto12}>Diets: </label>
-          {diets.length < 10 ? (
+          {diets.length < 11 ? (
             <div className={style.loding}>
-              <LoadingScreen />
+              <h1>... Loading</h1>
             </div>
           ) : (
             diets.map((e) => (
@@ -164,15 +176,15 @@ const CreateRecipe = () => {
         </div>
 
         {errores && (errores.name || errores.healthScore || errores.image) ? (
-          <h1 className={style.errores2}>Corregi tus errores</h1>
+          <h1 className={style.errores2}>Check your errors</h1>
         ) : errores &&
           (input.name === "" ||
             input.healthScore === "" ||
             input.image === "") ? (
-          <h1 className={style.errores2}>Completa los campos</h1>
+          <h1 className={style.errores2}>Fill in the blanks</h1>
         ) : (
           <button className={style.submit} type="submit">
-            Añadir receta
+            Add your recipe
           </button>
         )}
       </form>

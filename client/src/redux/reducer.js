@@ -16,15 +16,16 @@ const initialState = {
   aux: [],
   diets: [],
   detail: [],
+  filterValue: "default",
+  filterDbValue: "default",
 };
-
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_RECIPES:
       return {
         ...state,
         recipes: action.payload,
-        aux: action.payload,
+        aux: [...action.payload],
       };
     case GET_DIETS:
       return {
@@ -35,44 +36,111 @@ const reducer = (state = initialState, action) => {
       return { ...state, recipes: action.payload };
     case FILTER:
       const filterValue = action.payload;
+      const allRecipes = [...state.aux];
+      let filteredRecipes = [];
 
       if (filterValue === "default") {
-        return { ...state, recipes: state.aux };
+        filteredRecipes = allRecipes;
+      } else {
+        filteredRecipes = allRecipes.filter((recipe) => {
+          if (recipe.diets.includes(filterValue)) {
+            return true;
+          } else if (
+            filterValue !== "" &&
+            recipe.createdInDb &&
+            recipe.diets.find((diet) => diet.name === filterValue)
+          ) {
+            return true;
+          }
+          return false;
+        });
       }
-      const estadoGlobal = [...state.recipes];
-      let filteredRecipes = estadoGlobal.filter((recipe) =>
-        recipe.diets.includes(filterValue)
-      );
+
+      const filterDbValue = state.filterDbValue;
+      if (filterDbValue === "createdInDb") {
+        filteredRecipes = filteredRecipes.filter(
+          (recipe) => recipe.createdInDb
+        );
+      } else if (filterDbValue === "api") {
+        filteredRecipes = filteredRecipes.filter(
+          (recipe) => !recipe.createdInDb
+        );
+      }
 
       return {
         ...state,
-        recipesFiltered: filteredRecipes,
         recipes: filteredRecipes,
+        filterValue: filterValue,
       };
     case FILTER_DB:
+      const allRecipess = [...state.aux];
+      let createdFilter = [];
+
       if (action.payload === "default") {
-        return { ...state, recipes: state.aux };
+        createdFilter = allRecipess;
+      } else if (action.payload === "createdInDb") {
+        createdFilter = allRecipess.filter((recipe) => recipe.createdInDb);
+      } else if (action.payload === "api") {
+        createdFilter = allRecipess.filter((recipe) => !recipe.createdInDb);
       }
-      const estadoGlobel = [...state.aux];
-      const createdFilter =
-        action.payload === "createdInDb"
-          ? estadoGlobel.filter((recipe) => recipe.createdInDb)
-          : estadoGlobel.filter((recipe) => !recipe.createdInDb);
-      if (createdFilter.length === 0) {
-        window.alert("No se encontraron recetas de esa proveniencia");
-        return { ...state, recipes: state.aux };
+
+      const filterValuue = state.filterValue;
+      if (filterValuue !== "default") {
+        createdFilter = createdFilter.filter((recipe) => {
+          if (recipe.diets.includes(filterValuue)) {
+            return true;
+          } else if (
+            filterValuue !== "" &&
+            recipe.createdInDb &&
+            recipe.diets.find((diet) => diet.name === filterValuue)
+          ) {
+            return true;
+          }
+          return false;
+        });
       }
+
       return {
         ...state,
         recipes: createdFilter,
+        filterDbValue: action.payload,
       };
     case ORDER_BY_NAME:
       if (action.payload === "default") {
-        return { ...state, recipes: state.aux };
+        let filteredRecipes = [...state.aux];
+
+        const filterValue = state.filterValue;
+        if (filterValue !== "default") {
+          filteredRecipes = filteredRecipes.filter((recipe) => {
+            if (recipe.diets.includes(filterValue)) {
+              return true;
+            } else if (
+              filterValue !== "" &&
+              recipe.createdInDb &&
+              recipe.diets.find((diet) => diet.name === filterValue)
+            ) {
+              return true;
+            }
+            return false;
+          });
+        }
+
+        const filterDbValue = state.filterDbValue;
+        if (filterDbValue === "createdInDb") {
+          filteredRecipes = filteredRecipes.filter(
+            (recipe) => recipe.createdInDb
+          );
+        } else if (filterDbValue === "api") {
+          filteredRecipes = filteredRecipes.filter(
+            (recipe) => !recipe.createdInDb
+          );
+        }
+
+        return { ...state, recipes: filteredRecipes };
       }
       const estadoGlobx = [...state.recipes];
       let sortedArr =
-        action.payload === "A"
+        action.payload === "D"
           ? estadoGlobx.sort(function (a, b) {
               if (a.name > b.name) {
                 return 1;
@@ -107,7 +175,36 @@ const reducer = (state = initialState, action) => {
       };
     case ORDER_BY_HS:
       if (action.payload === "default") {
-        return { ...state, recipes: state.aux };
+        let filteredRecipes = [...state.aux];
+
+        const filterValue = state.filterValue;
+        if (filterValue !== "default") {
+          filteredRecipes = filteredRecipes.filter((recipe) => {
+            if (recipe.diets.includes(filterValue)) {
+              return true;
+            } else if (
+              filterValue !== "" &&
+              recipe.createdInDb &&
+              recipe.diets.find((diet) => diet.name === filterValue)
+            ) {
+              return true;
+            }
+            return false;
+          });
+        }
+
+        const filterDbValue = state.filterDbValue;
+        if (filterDbValue === "createdInDb") {
+          filteredRecipes = filteredRecipes.filter(
+            (recipe) => recipe.createdInDb
+          );
+        } else if (filterDbValue === "api") {
+          filteredRecipes = filteredRecipes.filter(
+            (recipe) => !recipe.createdInDb
+          );
+        }
+
+        return { ...state, recipes: filteredRecipes };
       }
       const estadoGlob = [...state.recipes];
       let sortArrayHS =

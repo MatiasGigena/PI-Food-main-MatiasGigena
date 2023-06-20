@@ -18,11 +18,16 @@ module.exports = (sequelize) => {
       },
       summary: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       healthScore: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: true,
+        validate: {
+          isNumeric: {
+            args: true,
+          },
+        },
       },
       stepByStep: {
         type: DataTypes.STRING,

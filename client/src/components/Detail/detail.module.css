@@ -33,11 +33,12 @@
     right: 50.7%;
     font-size: 3vh;
     text-decoration: underline;
-    
 }
 .img{
+    position: absolute;
     border-radius: 5px;
     box-shadow: 0px 20px 30px 0px rgba(0,0,0,.75);
+    
 }
 .summa{
     font-family: "mega";
@@ -53,10 +54,12 @@
     padding: 1vw;
 }
 .texto17{
+    
     font-family: "mega";
     font-size: 3vh;
     text-decoration: underline;
-    margin: 3vh 0 2.3vh 0;  
+    margin: 53vh 0 2.3vh 0;  
+    
 }
 .steps{
     margin: 0;
@@ -77,4 +80,12 @@
     width: 3vw;
     top: 0;
     right: 0;
+}
+.loading{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "mega";
+    font-size: 5vh;
 }
