@@ -34,11 +34,10 @@ describe("Recipe model", () => {
       it("should work when it has a valid summary", async () => {
         const recipe = await Recipe.create({
           name: "Milanesa a la napolitana",
-          summary:
-            "Delicious breaded meat topped with tomato sauce and melted cheese",
+          summary: "Deliciosa milanesa napolitana a caballo con dos huevos",
         });
         expect(recipe.summary).to.equal(
-          "Delicious breaded meat topped with tomato sauce and melted cheese"
+          "Deliciosa milanesa napolitana a caballo con dos huevos"
         );
       });
     });
@@ -48,7 +47,7 @@ describe("Recipe model", () => {
         try {
           await Recipe.create({
             name: "Milanesa a la napolitana",
-            healthScore: "high",
+            healthScore: "hola esto es una prueba de henry",
           });
           throw new Error("It requires a valid healthScore");
         } catch (error) {
