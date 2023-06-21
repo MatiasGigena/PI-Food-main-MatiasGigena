@@ -57,7 +57,6 @@ const CreateRecipe = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postRecipe(input));
-    alert("Receta creada!");
     setInput({
       name: "",
       summary: "",

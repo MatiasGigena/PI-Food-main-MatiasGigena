@@ -70,6 +70,7 @@ export const postRecipe = (payload) => {
         "http://localhost:3001/recipes",
         payload
       );
+      alert(apiData.data);
       return apiData;
     } catch (error) {
       alert(error.response.data.error);

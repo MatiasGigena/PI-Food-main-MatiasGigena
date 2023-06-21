@@ -39,7 +39,7 @@ const recipePostHandler = async (req, res) => {
       healthScore,
       diets
     );
-    res.status(200).json(newRecipe);
+    res.status(200).json("Receta creada con exito!");
   } catch (error) {
     res.status(500).json({ error: "No se ha podido crear tu receta" });
   }
