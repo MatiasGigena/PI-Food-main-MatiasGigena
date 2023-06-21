@@ -17,7 +17,6 @@ const recipeHandler = async (req, res) => {
   }
 };
 const recipeByIdHandler = async (req, res) => {
-  //ESTA FUNCION VA A BUSCAR POR ID
   const { id } = req.params;
   //Ternario, si el id es NAN significa que la receta pertenece a la base de datos, sino, es API .
   const source = isNaN(id) ? "bdd" : "api";
@@ -29,10 +28,8 @@ const recipeByIdHandler = async (req, res) => {
   }
 };
 const recipePostHandler = async (req, res) => {
-  //ESTA FUNCION VA A SERVIR PARA POSTEAR NUEVAS RECETAS
   const { name, summary, image, stepByStep, healthScore, diets } = req.body;
   try {
-    // Crear nuevas recetas
     if (!name) res.status(400).json({ error: "Missing name" });
     const newRecipe = await createController(
       name,

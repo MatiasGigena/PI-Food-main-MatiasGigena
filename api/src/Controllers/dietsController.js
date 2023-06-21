@@ -5,7 +5,6 @@ const { API_KEY } = process.env;
 const cleanArray = (arr) =>
   arr.map((e) => {
     return {
-      //Eliminar guiones y espacios en blanco de las dietas
       diets: e.diets.map((diet) => diet + "--"),
     };
   });
@@ -27,11 +26,9 @@ const getAllDiets = async () => {
       dietNames.add("vegetarian--");
     });
   });
-  console.log(dietNames);
-  // Convertir el conjunto de nombres de dietas a un array
+
   const uniqueDietNames = [...dietNames];
-  console.log(uniqueDietNames);
-  // Guardar los nombres de dietas en la base de datos usando Sequelize
+
   for (const dietName of uniqueDietNames) {
     await Diet.findOrCreate({
       where: { name: dietName },
