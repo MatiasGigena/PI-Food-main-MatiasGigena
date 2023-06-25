@@ -5,20 +5,20 @@
 
 .barra{
     position: absolute;
-    right: 42%;
-    height: 5vh;
+    right: 45%;
+    height: 32px;
     border-radius: 5px;
-    width: 15vw;
-    transition: 400ms;
+    width: 150px;
+    z-index: 9999;
 }
 
 .boton{
     position: absolute;
-    width: 2.7vw;
-    height: 5.2vh;
-    right: 38.8%;
+    width: 35px;
+    height: 35px;
+    right: 42%;
     border-radius: 200px;
-    transition: 400ms;
+    z-index: 9999;
 }
 
 .barra:hover{
@@ -30,4 +30,48 @@
 .boton:hover{
     background-color: black;
     border: 2px solid white;
+}
+@media (max-width: 1205px){
+    .barra{
+        width: 140px;
+    }
+    .boton{
+        width: 34px;
+        right: 41%;
+    }
+}
+@media (max-width: 768px){
+    .barra{
+        width: 110px;
+    }
+    .boton{
+        width: 34px;
+        right: 38%;
+    }
+}
+@media (max-width: 480px){
+    .barra{
+        width: 80px;
+        right: 42%;
+        height: 20px;
+    }
+    .boton{
+        width: 25px;
+        right: 36%;
+        height: 22px;
+        font-size: 0.6rem;
+    }
+}
+@media (max-width: 301px){
+    .barra{
+        width: 46px;
+        right: 42%;
+        height: 15px;
+    }
+    .boton{
+        width: 20px;
+        right: 34%;
+        height: 17px;
+        font-size: 0.4rem;
+    }
 }

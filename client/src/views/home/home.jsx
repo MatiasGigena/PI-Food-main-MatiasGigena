@@ -11,9 +11,11 @@ import {
 import style from "./home.module.css";
 import Paginado from "../../components/Paginado/paginado";
 import NavBar from "../../components/navBar/navBar";
+import { BsFilterLeft } from "react-icons/bs";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const [filtros, setFiltros] = useState(false);
   const recipes = useSelector((state) => state.recipes);
   //Declaro estado con pagina y modificador d pagina
   const [currentPage, setCurrentPage] = useState(1);
@@ -64,41 +66,48 @@ const Home = () => {
   return (
     <div className={style.container}>
       <NavBar setCurrentPage={setCurrentPage} />
-      <button onClick={handleClick} className={style.refresh}>
+      {/* <button onClick={handleClick} className={style.refresh}>
         ⟳
+      </button> */}
+      <button className={style.botonepico} onClick={() => setFiltros(!filtros)}>
+        <BsFilterLeft />
       </button>
-      <h1 className={style.filtrado}>Filter: </h1>
-      <select onChange={handleOrder} className={style.selector}>
-        <option value="default">Default</option>
-        <option value="A">Z-A</option>
-        <option value="D">A-Z</option>
-      </select>
-      <select onChange={handleO} className={style.selector1}>
-        <option value="default">Default</option>
-        <option value="D"> + Healthier</option>
-        <option value="A"> - Healthier</option>
-      </select>
-      <select className={style.selector3} onChange={handleFilterDiets}>
-        <option value="default">All</option>
-        <option value="dairy free--">dairy free</option>
-        <option value="gluten free--">gluten free</option>
-        <option value="lacto ovo vegetarian--">lacto ovo vegetarian</option>
-        <option value="vegan--">vegan</option>
-        <option value="pescatarian--">pescatarian</option>
-        <option value="paleolithic--">paleolithic</option>
-        <option value="primal--">primal</option>
-        <option value="vegetarian--">vegetarian</option>
-        <option value="fodmap friendly--">fodkmap friendly</option>
-        <option value="ketogenic--">ketogenic</option>
-      </select>
-      <select
-        className={style.selector2}
-        onChange={(e) => handleFilterCreated(e)}
-      >
-        <option value="default">All</option>
-        <option value="createdInDb">Created</option>
-        <option value="api">Existing</option>
-      </select>
+      {filtros === true && (
+        <div className={style.filtros}>
+          <select onChange={handleOrder} className={style.selector}>
+            <option value="default">Default</option>
+            <option value="A">Z-A</option>
+            <option value="D">A-Z</option>
+          </select>
+          <select onChange={handleO} className={style.selector1}>
+            <option value="default">Default</option>
+            <option value="D"> + Healthier</option>
+            <option value="A"> - Healthier</option>
+          </select>
+          <select className={style.selector3} onChange={handleFilterDiets}>
+            <option value="default">All</option>
+            <option value="dairy free--">dairy free</option>
+            <option value="gluten free--">gluten free</option>
+            <option value="lacto ovo vegetarian--">lacto ovo vegetarian</option>
+            <option value="vegan--">vegan</option>
+            <option value="pescatarian--">pescatarian</option>
+            <option value="paleolithic--">paleolithic</option>
+            <option value="primal--">primal</option>
+            <option value="vegetarian--">vegetarian</option>
+            <option value="fodmap friendly--">fodkmap friendly</option>
+            <option value="ketogenic--">ketogenic</option>
+          </select>
+          <select
+            className={style.selector2}
+            onChange={(e) => handleFilterCreated(e)}
+          >
+            <option value="default">All</option>
+            <option value="createdInDb">Created</option>
+            <option value="api">Existing</option>
+          </select>
+        </div>
+      )}
+
       <h1 className={style.text}>Food addicts</h1>
       <div className={style.paginado}>
         <Paginado
@@ -108,6 +117,7 @@ const Home = () => {
           currentPage={currentPage}
         />
       </div>
+
       <Cards currentRecipes={currentRecipes} />
     </div>
   );

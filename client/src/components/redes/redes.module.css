@@ -1,40 +1,74 @@
-.button {
-    position: absolute;
-    bottom: 95vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 15px;
-    gap: 15px;
-    background-color: #181717;
-    outline: 3px #181717 solid;
-    outline-offset: -3px;
-    border-radius: 15px;
-    border: none;
-    cursor: pointer;
-    transition: 400ms;
-    height: 5vh;
+.container{
+  position: absolute;
+  width: 100%;
+  left: 70px;
+  top: 7px; 
+  z-index: 9998;
+}
+
+.links{
+  color: white;
+  font-size: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  z-index: 9998;
+
+}
+
+.link{
+  transition: all 300ms;
+}
+.link:hover{
+  transform: scale(1.3);
+}
+
+@media (max-width: 1201px){
+  .container{
+    top: 3px;
   }
   
-  .button .text {
-    color: white;
-    font-weight: 700;
-    font-size: 1em;
-    transition: 400ms;
+  .links{
+    gap: 1.1rem;
+    font-size: 1.7rem
+  
+  }
+}
+
+@media (max-width: 768px){
+  .container{
+    top: 3px;
+    left: 50px;
   }
   
-  .button svg path {
-    transition: 400ms;
+  .links{
+    gap: 0.4rem;
+    font-size: 1.3rem
+  
+  }
+}
+
+@media (max-width: 480px){
+  .container{
+    top: 3px;
+    left: 40px;
   }
   
-  .button:hover {
-    background-color: white;
+  .links{
+    gap: 0.3rem;
+    font-size: 1.1rem
+  
+  }
+}
+
+@media (max-width: 301px){
+  .container{
+    top: 3px;
+    left: 31px;
   }
   
-  .button:hover .text {
-    color: #181717;
-  }
+  .links{
+    gap: 0.01rem;
+    font-size: 0.9rem
   
-  .button:hover svg path {
-    fill: #181717;
   }
+}

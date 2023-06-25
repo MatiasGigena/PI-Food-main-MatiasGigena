@@ -4,14 +4,13 @@
     grid-template-rows: 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw;
     list-style-type: none;
     position: absolute;
-top: 28vh;
-left: -35;
-padding: 0;
+top: 180px;
+padding-left:3px;
 padding-top: 0.8vh;
-gap: 0.5vh;
+gap: 0.4rem;
 }
 .paginado{
-    width: 1.2vw;
+    width: 100%;
 }
 
 .boton{
@@ -20,7 +19,8 @@ gap: 0.5vh;
  background-color:  white;
  cursor: pointer;
  border-radius: 5px;
- width: 2vw;
+ width: 30px;
+
  color: black;
  text-align: center;
  box-shadow: 0px 20px 30px black;
@@ -37,9 +37,9 @@ gap: 0.5vh;
     position: absolute;
  background-color:  white;
  cursor: pointer;
- height: 4.6vh;
+ height: 33px;
  border-radius: 5px;
- width: 2vw;
+ width: 30px;
  color: black;
  text-align: center;
  box-shadow: 0px 20px 30px black;
@@ -51,9 +51,9 @@ gap: 0.5vh;
     position: absolute;
     background-color:  white;
     cursor: pointer;
-    height: 5vh;
+    height: 37px;
     border-radius: 5px;
-    width: 2.1vw;
+    width: 34px;
     color: black;
     text-align: center;
     box-shadow: 0px 20px 30px black;
@@ -84,3 +84,33 @@ gap: 0.5vh;
     color: white;
     border: 1px solid white;
 }
+@media (max-width: 1205px){
+    .container{
+
+        gap: 0.9rem;
+    }
+   
+}
+    @media (max-width: 769px){
+        .container{
+
+          
+            gap: 1.2rem;
+        }
+    }
+    @media (max-width: 481px){
+        .container{
+
+          
+            gap: 1.4rem;
+        }
+    }
+    
+    @media (max-width: 301px){
+        .container{
+
+          
+            gap: 1.6rem;
+        }
+    }
+    

@@ -1,6 +1,38 @@
 .container{
     display: grid;
-    grid-template-columns: 25% 25% 25% 25% ;
-    margin: 150px auto ;
+    grid-template-columns: repeat(1, 0.5fr);
+    margin: 200px 10% ;
 }
 
+@media (min-width:301px){
+    .container{
+        display: grid;
+        grid-template-columns: repeat(2, 0.5fr);
+        margin: 200px 10%
+    }
+}
+@media (min-width:481px){
+    .container{
+        display: grid;
+        grid-template-columns: repeat(2, 0.5fr);
+        margin: 200px 0 ;
+        width: 100%;
+        
+    }
+}
+
+@media (min-width: 769px){
+    .container{
+        display: grid;
+        grid-template-columns: repeat(3, 0.5fr);
+        margin: 200px auto ;
+    }
+}
+
+@media (min-width: 1201px){
+    .container{
+        display: grid;
+        grid-template-columns: repeat(4, 0.5fr);
+        margin: 200px auto ;
+    }
+}

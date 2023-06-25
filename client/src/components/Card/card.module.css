@@ -9,12 +9,10 @@
     background-image: url("../../assets/imgs/TABLA-2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    padding-bottom: 35vh;
-padding-left: 3vh;
-padding-right: 3vh;
+padding: 0 3vh 280px 3vh;
     margin: 0 70px 20px 70px;
     border-radius: 15px;
-    width: 50%;
+    width: 170px;
     transition: all 0.5s;
     transform: perspective(1000px) rotateX(10deg) translateY(-10px) translateZ(10px);
 }
@@ -34,7 +32,7 @@ padding-right: 3vh;
 .name{
 font-family: "mega";
 text-align:center;
-font-size: 1.2vw;
+font-size: 0.9rem;
 text-shadow: 1px -1px  rgb(0, 0, 0)  
 }
 .imagecont{
@@ -55,4 +53,136 @@ border-radius: 15px;
 
 .container:hover{
     transform: perspective(1000px) rotateX(15deg) translateY(-20px) translateZ(30px);
+}
+
+
+@media (max-width: 1201px){
+    .container{
+        text-decoration: none;
+  color: black;
+    background-image: url("../../assets/imgs/TABLA-2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+padding: 0 3vh 205px 3vh;
+    margin: 0 70px 20px 70px;
+    border-radius: 15px;
+    width: 145px;
+    transition: all 0.5s;
+    transform: perspective(1000px) rotateX(10deg) translateY(-10px) translateZ(10px);
+    }
+    .diets{
+        font-family: "mega";
+        text-align: center;
+        font-size: 0.75rem;
+    }
+    .health{
+        position: absolute;
+        font-family: "mega";
+        text-align: center;
+        font-size: 0.9rem;
+        bottom: 0;
+        right: 30px;
+        text-shadow: 1px -1px  rgb(47, 255, 0)  
+    }
+    .image{
+        width: 90%;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        border: 1px solid rgb(0, 0, 0);
+    }
+    .imagecont{
+        position: absolute;
+        bottom: 20%;
+       left: 10px;   
+    width: 95%;        
+    bottom: 10%;
+    border-radius: 15px;
+    }
+}
+@media (max-width: 769px){
+    .container{
+        text-decoration: none;
+  color: black;
+    background-image: url("../../assets/imgs/TABLA-2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+padding: 0 3vh 147px 3vh;
+    margin: 0 70px 20px 70px;
+    border-radius: 15px;
+    width: 125px;
+    transition: all 0.5s;
+    transform: perspective(1000px) rotateX(10deg) translateY(-10px) translateZ(10px);
+    }
+    .diets{
+        font-family: "mega";
+        text-align: center;
+        font-size: 0.75rem;
+    }
+    .health{
+        position: absolute;
+        font-family: "mega";
+        text-align: center;
+        font-size: 0.8rem;
+        bottom: 0;
+        right: 30px;
+        text-shadow: 1px -1px  rgb(47, 255, 0)  
+    }
+    .image{
+        width: 80%;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        border: 1px solid rgb(0, 0, 0);
+    }
+    .imagecont{
+        position: absolute;
+        bottom: 20%;
+       left: 20px;          
+    bottom: 20px;
+    border-radius: 15px;
+    }
+}
+@media (max-width: 481px){
+.container{
+        text-decoration: none;
+  color: black;
+    background-image: url("../../assets/imgs/TABLA-2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+padding: 0 0 80px 0;
+    margin: 0  0 20px 30px;
+    border-radius: 15px;
+    width: 120px;
+    transition: all 0.5s;
+    transform: perspective(1000px) rotateX(10deg) translateY(-10px) translateZ(10px);
+    }
+    .diets{
+        font-family: "mega";
+        text-align: center;
+        font-size: 0.75rem;
+    }
+    .health{
+        position: absolute;
+        font-family: "mega";
+        text-align: center;
+        font-size: 0.68433rem;
+        bottom: 0;
+        right: 16px;
+        text-shadow: 1px -1px  rgb(47, 255, 0)  
+    }
+    .image{
+        width: 50%;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        border: 1px solid rgb(0, 0, 0);
+    }
+    .imagecont{
+        position: absolute;
+        bottom: 20%;
+       left: 30px;          
+    bottom: 20px;
+    border-radius: 15px;
+    }
+}
+@media (max-width: 250px){
+
 }

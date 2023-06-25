@@ -7,8 +7,9 @@ const NavBar = ({ setCurrentPage }) => {
       <SearchBar setCurrentPage={setCurrentPage} />
       <Button />
       <SocialButton
-        socialMedia="Github"
         link="https://github.com/MatiasGigena"
+        link2="https://www.linkedin.com/in/matias-gigena/"
+        link3="https://www.instagram.com/matiasgigena_/"
       />
     </div>
   );
