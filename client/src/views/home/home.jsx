@@ -62,9 +62,8 @@ const Home = () => {
     dispatch(orderByHealthscore(e.target.value));
     setCurrentPage(1);
   };
-  console.log(recipes);
   return (
-    <div className={style.container}>
+    <div className={`${style.container}`}>
       <NavBar setCurrentPage={setCurrentPage} />
       {/* <button onClick={handleClick} className={style.refresh}>
         ⟳
@@ -108,7 +107,7 @@ const Home = () => {
         </div>
       )}
 
-      <h1 className={style.text}>Food addicts</h1>
+      <h1 className={`${style.text}`}>The Food Bookshelf</h1>
       <div className={style.paginado}>
         <Paginado
           recipesPerPage={recipesPerPage}

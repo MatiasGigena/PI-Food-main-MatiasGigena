@@ -17,6 +17,8 @@ z-index: 9999;
     font-size: 0.9rem;
     z-index: 9999;
     text-decoration: none;
+    background-color: white;
+    border: 2px solid black;
 }
 .boton:hover{
     background-color: black;

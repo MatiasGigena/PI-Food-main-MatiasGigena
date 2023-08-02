@@ -26,13 +26,13 @@ const SearchBar = ({ setCurrentPage }) => {
   return (
     <div>
       <input
-        className={style.barra}
-        type="search"
-        placeholder=" Search recipe"
+        type="text"
+        placeholder="Search recipe"
         onChange={handleChange}
         onClick={handleClick}
         onMouseLeave={handleLeave}
         value={name}
+        className={`${style.barra} input input-bordered w-full max-w-xs`}
       />
       <button type="submit" onClick={handleSubmit} className={style.boton}>
         🔎

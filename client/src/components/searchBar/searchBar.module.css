@@ -5,20 +5,23 @@
 
 .barra{
     position: absolute;
-    right: 45%;
-    height: 32px;
+    right: 40%;
+    height: 40px;
     border-radius: 5px;
-    width: 150px;
+    width: 300px;
     z-index: 9999;
+    border: 1px solid black;
 }
 
 .boton{
     position: absolute;
-    width: 35px;
-    height: 35px;
-    right: 42%;
+    width: 45px;
+    height: 43px;
+    right: 36%;
+    border: 2px solid black;
     border-radius: 200px;
     z-index: 9999;
+    background: white;
 }
 
 .barra:hover{

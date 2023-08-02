@@ -1,23 +1,44 @@
-import style from "./card.module.css";
-import { Link } from "react-router-dom";
-
 const Card = (props) => {
   return (
-    <Link className={style.container} to={`/detail/${props.id}`}>
-      <div>
-        <p className={style.name}>Name: {props.name}</p>
-        <div className={style.dietscont}>
-          <p className={style.diets}>
-            Diet types:
-            {props.diets && props.diets.map((e) => (e.name ? e.name : e))}
-          </p>
-        </div>
-        <p className={style.health}>Healthscore: {props.healthScore}%</p>
-        <div className={style.imagecont}>
-          <img className={style.image} src={props.image} alt="" />
+    <div class=" w-60 mb-28  transition duration-300 ease-in-out delay-150 transform bg-white shadow-2xl rounded-xl md:w-80 md:-ml-16 md:hover:-translate-x-16 md:hover:-translate-y-8 border">
+      <div class="relative flex items-end overflow-hidden rounded-xl">
+        <img src={props.image} className="w-full" alt="wallpaper" />
+
+        <div class="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 text-green-400"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.318 2.318a4.5 4.5 0 016.364 0L10.001 3l-.319-.318a4.5 4.5 0 016.364 6.364L10 15.409l-6.045-6.045a4.5 4.5 0 010-6.364z"
+              clip-rule="evenodd"
+            />
+          </svg>
+
+          <span class="ml-1 text-sm text-slate-400">{props.healthScore}</span>
         </div>
       </div>
-    </Link>
+
+      <div class="mt-1 p-2">
+        <h2 class="text-black font-normal font-[Poppins] h-[50px]">
+          {props.name}
+        </h2>
+        <p class="mt-3 font-light font-[Poppins] flex items-center   text-xs h-[60px] text-grey">
+          {props.diets && props.diets.map((e) => (e.name ? e.name : e))}
+        </p>
+
+        <div class="mt-3 flex items-end justify-between ">
+          <div class="group inline-flex rounded-xl bg-orange-100 p-2 hover:bg-orange-200">
+            <a href={`/detail/${props.id}`} className="font-[Poppins]">
+              More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

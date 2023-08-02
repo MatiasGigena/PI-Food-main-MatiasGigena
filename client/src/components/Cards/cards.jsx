@@ -1,9 +1,8 @@
 import Card from "../Card/card";
-import style from "./cards.module.css";
 
 const Cards = ({ currentRecipes }) => {
   return (
-    <div className={style.container}>
+    <div className="grid   mx-auto mt-56 grid-cols-1 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 ">
       {currentRecipes.map((recipe, index) => {
         return (
           <Card
