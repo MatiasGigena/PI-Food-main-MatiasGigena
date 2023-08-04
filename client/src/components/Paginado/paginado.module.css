@@ -1,116 +1,86 @@
-.container{
-    font-size: 1.5rem;
-    display: grid;
-    grid-template-rows: 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw;
-    list-style-type: none;
-    position: absolute;
-top: 180px;
-padding-left:3px;
-padding-top: 0.8vh;
-gap: 0.4rem;
+.container {
+    height: 10vh;
+  font-size: 1.5rem;
+  display: grid;
+  grid-template-columns: 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw;
+  list-style-type: none;
+  padding-left: 3px;
+  padding-top: 0.8vh;
+  gap: 1rem;
 }
-.paginado{
-    width: 100%;
-}
-
-.boton{
-    position: absolute;
-
- background-color:  white;
- cursor: pointer;
- border-radius: 5px;
- width: 30px;
-
- color: black;
- text-align: center;
- box-shadow: 0px 20px 30px black;
- transition: 400ms;
+.paginado {
+  width: 100%;
 }
 
-.boton:hover{
-    background-color: black;
-    color: white;
-    border: 1px solid white;
+
+
+.botonSig {
+  position: absolute;
+  background-color: white;
+  cursor: pointer;
+  height: 33px;
+  border-radius: 5px;
+  width: 30px;
+  color: black;
+  text-align: center;
+  box-shadow: 0px 20px 30px black;
+  transition: 400ms;
+  font-size: large;
+  margin-top: 0;
+}
+.botonPrev {
+  position: absolute;
+  background-color: white;
+  cursor: pointer;
+  height: 37px;
+  border-radius: 5px;
+  width: 34px;
+  color: black;
+  text-align: center;
+  box-shadow: 0px 20px 30px black;
+  transition: 400ms;
+  top: 0;
+  font-size: x-large;
 }
 
-.botonSig{
-    position: absolute;
- background-color:  white;
- cursor: pointer;
- height: 33px;
- border-radius: 5px;
- width: 30px;
- color: black;
- text-align: center;
- box-shadow: 0px 20px 30px black;
- transition: 400ms;
- font-size: large;
- margin-top: 0;
-}
-.botonPrev{
-    position: absolute;
-    background-color:  white;
-    cursor: pointer;
-    height: 37px;
-    border-radius: 5px;
-    width: 34px;
-    color: black;
-    text-align: center;
-    box-shadow: 0px 20px 30px black;
-    transition: 400ms;
-    top: 0;
-    font-size: x-large;
+.botonSig:not(:disabled):hover,
+.botonPrev:not(:disabled):hover {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
 }
 
-.botonSig:not(:disabled):hover, .botonPrev:not(:disabled):hover{
-    background-color: black;
-    color: white;
-    border: 1px solid white;
+.botonPrev:disabled {
+  background: linear-gradient(rgba(5, 7, 12, 0.75), rgba(5, 7, 12, 0.75)), white;
 }
 
-.botonPrev:disabled{
-    background: linear-gradient(rgba(5,7,12,.75), rgba(5,7,12,.75)),
-    white;
-  
+.botonSig:disabled {
+  background: linear-gradient(rgba(5, 7, 12, 0.75), rgba(5, 7, 12, 0.75)), white;
 }
 
-.botonSig:disabled{
-    background: linear-gradient(rgba(5,7,12,.75), rgba(5,7,12,.75)),
-    white; 
+.currentPage {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+@media (max-width: 1205px) {
+  .container {
+    gap: 0.9rem;
+  }
+}
+@media (max-width: 769px) {
+  .container {
+    gap: 1.2rem;
+  }
+}
+@media (max-width: 481px) {
+  .container {
+    gap: 1.4rem;
+  }
 }
 
-.currentPage{
-    background-color: black;
-    color: white;
-    border: 1px solid white;
+@media (max-width: 301px) {
+  .container {
+    gap: 1.6rem;
+  }
 }
-@media (max-width: 1205px){
-    .container{
-
-        gap: 0.9rem;
-    }
-   
-}
-    @media (max-width: 769px){
-        .container{
-
-          
-            gap: 1.2rem;
-        }
-    }
-    @media (max-width: 481px){
-        .container{
-
-          
-            gap: 1.4rem;
-        }
-    }
-    
-    @media (max-width: 301px){
-        .container{
-
-          
-            gap: 1.6rem;
-        }
-    }
-    

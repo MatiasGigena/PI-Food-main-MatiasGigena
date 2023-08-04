@@ -1,6 +1,6 @@
 const Card = (props) => {
   return (
-    <div class=" w-60 mb-28  transition duration-300 ease-in-out delay-150 transform bg-white shadow-2xl rounded-xl md:w-80 md:-ml-16 md:hover:-translate-x-16 md:hover:-translate-y-8 border">
+    <div class=" w-60 mb-28 transition duration-300 ease-in-out delay-150 transform bg-white shadow-2xl rounded-xl md:w-80 md:-ml-16 md:hover:-translate-x-16 md:hover:-translate-y-8 border">
       <div class="relative flex items-end overflow-hidden rounded-xl">
         <img src={props.image} className="w-full" alt="wallpaper" />
 

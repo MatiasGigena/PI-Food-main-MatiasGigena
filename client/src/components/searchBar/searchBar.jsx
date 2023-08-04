@@ -2,6 +2,8 @@ import style from "./searchBar.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRecipeByName } from "../../redux/actions";
+import SearchIcon from '@mui/icons-material/Search';
+import { IconButton } from "@mui/material";
 
 const SearchBar = ({ setCurrentPage }) => {
   const [name, setName] = useState("");
@@ -24,18 +26,17 @@ const SearchBar = ({ setCurrentPage }) => {
     e.target.placeholder = " Search recipe";
   };
   return (
-    <div>
-      <input
-        type="text"
+    <div className="flex gap-4 "> 
+      <input type="text"
         placeholder="Search recipe"
         onChange={handleChange}
         onClick={handleClick}
         onMouseLeave={handleLeave}
-        value={name}
-        className={`${style.barra} input input-bordered w-full max-w-xs`}
-      />
-      <button type="submit" onClick={handleSubmit} className={style.boton}>
-        🔎
+        value={name} className="input input-bordered w-24 md:w-auto" />
+      <button type="submit" onClick={handleSubmit}>
+        <IconButton>
+          <SearchIcon style={{ color: "white"}}/>
+        </IconButton>
       </button>
     </div>
   );

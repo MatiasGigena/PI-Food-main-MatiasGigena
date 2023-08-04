@@ -1,57 +1,65 @@
-import style from "./paginado.module.css";
+import * as React from 'react';
+import Pagination from '@mui/material/Pagination';
+import PaginationItem from '@mui/material/PaginationItem';
+import Stack from '@mui/material/Stack';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { createTheme, ThemeProvider, experimentalStyled as sx } from "@mui/material/styles";
 
-const Paginado = ({ currentPage, recipesPerPage, recipes, paginado }) => {
-  const pageNumbers = [];
-  const goToNextPage = () => {
-    paginado(currentPage + 1);
+// const customTheme = createTheme({
+//   components: {
+//     MuiPagination: {
+//       styleOverrides: {
+//         root: {
+//           '& .MuiPaginationItem-root': {
+//             color: 'white', // Change the color here to the desired color
+//           },
+//         },
+//       },
+//     },
+//   },
+// });
+
+export default function Paginado({ currentPage, recipesPerPage, recipes, paginado }) {
+  const totalPages = Math.ceil(recipes / recipesPerPage);
+
+  const handlePageChange = (event, newPage) => {
+    paginado(newPage);
   };
 
-  const goToPrevPage = () => {
-    paginado(currentPage - 1);
-  };
-  //Itero todas las recetas dividido las recetas por pagina y pusheo al array de pageNumbers, los numeros de cada pagina
-  for (let index = 1; index <= Math.ceil(recipes / recipesPerPage); index++) {
-    pageNumbers.push(index);
-  }
   return (
-    <div>
-      <nav>
-        <ul className={style.container}>
-          <li className={style.paginado}>
-            <button
-              className={style.botonPrev}
-              onClick={goToPrevPage}
-              disabled={currentPage === 1}
-            >
-              ᴧ
-            </button>
-          </li>
-          {pageNumbers &&
-            pageNumbers.map((number) => (
-              <li className={style.paginado} key={number}>
-                <a
-                  className={`${style.boton} ${
-                    currentPage === number ? style.currentPage : ""
-                  }`}
-                  onClick={() => paginado(number)}
-                >
-                  {number}
-                </a>
-              </li>
-            ))}
-          <li className={style.paginado}>
-            <button
-              className={style.botonSig}
-              onClick={goToNextPage}
-              disabled={currentPage === Math.ceil(recipes / recipesPerPage)}
-            >
-              V
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    // <ThemeProvider theme={customTheme}>
+      <Stack spacing={2}>
+        <Pagination
+        className='bg-white rounded-full h-10 flex items-center justify-center' 
+          count={totalPages}
+          color='primary'
+          sx={{color: "white"}}
+          page={currentPage}
+          onChange={handlePageChange}
+          renderItem={(item) => {
+            if (item.type === 'previous') {
+              return (
+                <PaginationItem
+                  {...item}
+                  icon={<ArrowBackIcon />}
+                  disabled={currentPage === 1}
+                />
+              );
+            }
+            if (item.type === 'next') {
+              return (
+                <PaginationItem
+                  {...item}
+                  icon={<ArrowForwardIcon />}
+                  disabled={currentPage === totalPages}
+                />
+              );
+            }
+            return <PaginationItem {...item} />;
+          }}
+        />
+      </Stack>
+    // </ThemeProvider>
   );
-};
-
-export default Paginado;
+}

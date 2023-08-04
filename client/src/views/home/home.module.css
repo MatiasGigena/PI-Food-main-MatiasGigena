@@ -7,15 +7,12 @@
   background-image: url("../../assets/imgs/20542214.jpg");
   overflow: hidden;
   min-height: 100vh;
-  position: absolute;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;
 }
 .filtros {
-  margin-top: 60px;
-  position: absolute;
   left: 0;
   min-height: 10vh;
   display: flex;
@@ -25,13 +22,11 @@
   align-items: end;
 }
 .filtros > * {
-  font-size: 0.96rem;
   margin-bottom: 4px;
   border-radius: 8px;
-  direction: rtl;
   flex-grow: 0;
   flex-basis: auto;
-  width: 40px;
+  width: 100%;
   z-index: 9999;
 }
 .botonepico {
@@ -49,12 +44,11 @@
 }
 .text {
   font-family: "Poppins", sans-serif;
+  margin-top: 1.7rem;
   font-size: 4.5rem;
-  position: absolute;
   color: white;
   text-align: center;
   width: 100%;
-  top: 4%;
   font-weight: 300;
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
@@ -64,35 +58,14 @@
  left: 50%;
  position: absolute;
 } */
-.paginado {
-  position: fixed;
-}
+
 
 .refresh:hover {
   background-color: black;
   color: white;
   border: 2px solid white;
 }
-.selector:hover {
-  background-color: black;
-  color: white;
-  border: 2px solid white;
-}
-.selector1:hover {
-  background-color: black;
-  color: white;
-  border: 2px solid white;
-}
-.selector2:hover {
-  background-color: black;
-  color: white;
-  border: 2px solid white;
-}
-.selector3:hover {
-  background-color: black;
-  color: white;
-  border: 2px solid white;
-}
+
 
 @media (max-width: 1205px) {
   .text {

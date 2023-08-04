@@ -3,15 +3,18 @@ import Button from "../Button/button";
 import SocialButton from "../redes/redes";
 const NavBar = ({ setCurrentPage }) => {
   return (
-    <div>
-      <SearchBar setCurrentPage={setCurrentPage} />
-      <Button />
-      <SocialButton
-        link="https://github.com/MatiasGigena"
-        link2="https://www.linkedin.com/in/matias-gigena/"
-        link3="https://www.instagram.com/matiasgigena_/"
-      />
+    <div className="navbar relative">
+  <div className="flex w-full  justify-center  gap-2">
+    <div className="form-control ">
+      <SearchBar setCurrentPage={setCurrentPage} type="text" placeholder="Search" />
     </div>
+    <div className=" dropdown-end">
+        <div className="w-10 absolute right-3 top-4 rounded-full">
+          <Button src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+    </div>
+  </div>
+</div>
   );
 };
 

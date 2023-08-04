@@ -65,50 +65,68 @@ const Home = () => {
   return (
     <div className={`${style.container}`}>
       <NavBar setCurrentPage={setCurrentPage} />
-      {/* <button onClick={handleClick} className={style.refresh}>
-        ⟳
-      </button> */}
-      <button className={style.botonepico} onClick={() => setFiltros(!filtros)}>
-        <BsFilterLeft />
-      </button>
-      {filtros === true && (
-        <div className={style.filtros}>
-          <select onChange={handleOrder} className={style.selector}>
-            <option value="default">Default</option>
-            <option value="A">Z-A</option>
-            <option value="D">A-Z</option>
-          </select>
-          <select onChange={handleO} className={style.selector1}>
-            <option value="default">Default</option>
-            <option value="D"> + Healthier</option>
-            <option value="A"> - Healthier</option>
-          </select>
-          <select className={style.selector3} onChange={handleFilterDiets}>
-            <option value="default">All</option>
-            <option value="dairy free--">dairy free</option>
-            <option value="gluten free--">gluten free</option>
-            <option value="lacto ovo vegetarian--">lacto ovo vegetarian</option>
-            <option value="vegan--">vegan</option>
-            <option value="pescatarian--">pescatarian</option>
-            <option value="paleolithic--">paleolithic</option>
-            <option value="primal--">primal</option>
-            <option value="vegetarian--">vegetarian</option>
-            <option value="fodmap friendly--">fodkmap friendly</option>
-            <option value="ketogenic--">ketogenic</option>
-          </select>
-          <select
-            className={style.selector2}
-            onChange={(e) => handleFilterCreated(e)}
-          >
-            <option value="default">All</option>
-            <option value="createdInDb">Created</option>
-            <option value="api">Existing</option>
-          </select>
+      <div className="drawer z-50">
+        <input id="my-drawer" type="checkbox" onClick={() => setFiltros(!filtros)} className="drawer-toggle" />
+        <div className="drawer-content z-50">
+          <label htmlFor="my-drawer" className="absolute top-0 -mt-14 text-[3rem] z-50 bg-transparent text-white ">
+            <BsFilterLeft />
+          </label>
         </div>
-      )}
-
-      <h1 className={`${style.text}`}>The Food Bookshelf</h1>
-      <div className={style.paginado}>
+        <div className="drawer-side z-50">
+          <label htmlFor="my-drawer" className="drawer-overlay z-50"></label>
+          <ul className="menu p-4 w-60 sm:w-80 h-full bg-gray-200 z-50 text-base-content">
+            {/* Sidebar content here */}
+            {filtros === true && (
+              <div className={style.filtros}>
+                <h3 className="text-4xl flex items-end justify-between font-medium font-[Poppins]">Filters <span className=" hover:underline text-xs">clean filters</span> </h3>
+                <select onChange={handleOrder} className="select select-bordered w-full max-w-xs">
+                  <option disabled selected>
+                    Alphatebical order
+                  </option>
+                  <option value="default">Default</option>
+                  <option value="A">Z-A</option>
+                  <option value="D">A-Z</option>
+                </select>
+                <select onChange={handleO} className="select select-bordered w-full max-w-xs">
+                  <option disabled selected>
+                 + or - Healthier order
+                  </option>
+                  <option value="default">Default</option>
+                  <option value="D"> + Healthier</option>
+                  <option value="A"> - Healthier</option>
+                </select>
+                <select className="select select-bordered w-full max-w-xs" onChange={handleFilterDiets}>
+                  <option disabled selected>
+                    Filter by diet types
+                  </option>
+                  <option value="default">All</option>
+                  <option value="dairy free--">dairy free</option>
+                  <option value="gluten free--">gluten free</option>
+                  <option value="lacto ovo vegetarian--">lacto ovo vegetarian</option>
+                  <option value="vegan--">vegan</option>
+                  <option value="pescatarian--">pescatarian</option>
+                  <option value="paleolithic--">paleolithic</option>
+                  <option value="primal--">primal</option>
+                  <option value="vegetarian--">vegetarian</option>
+                  <option value="fodmap friendly--">fodkmap friendly</option>
+                  <option value="ketogenic--">ketogenic</option>
+                </select>
+                <select className="select select-bordered w-full max-w-xs" onChange={(e) => handleFilterCreated(e)}>
+                  <option disabled selected>
+                    Filter by created or existing
+                  </option>
+                  <option value="default">All</option>
+                  <option value="createdInDb">Created</option>
+                  <option value="api">Existing</option>
+                </select>
+              </div>
+            )}
+          </ul>
+        </div>
+      </div>
+      <h1 className={`${style.text}`}>The Recipe Bookshelf</h1>
+      <Cards currentRecipes={currentRecipes} />
+      <div className="w-full relative mb-5 flex justify-center items-center">
         <Paginado
           recipesPerPage={recipesPerPage}
           recipes={recipes.length}
@@ -116,8 +134,6 @@ const Home = () => {
           currentPage={currentPage}
         />
       </div>
-
-      <Cards currentRecipes={currentRecipes} />
     </div>
   );
 };
