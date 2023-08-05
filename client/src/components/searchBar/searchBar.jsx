@@ -33,11 +33,9 @@ const SearchBar = ({ setCurrentPage }) => {
         onClick={handleClick}
         onMouseLeave={handleLeave}
         value={name} className="input input-bordered w-24 md:w-auto" />
-      <button type="submit" onClick={handleSubmit}>
-        <IconButton>
+      <IconButton type="submit" onClick={handleSubmit}>
           <SearchIcon style={{ color: "white"}}/>
-        </IconButton>
-      </button>
+      </IconButton>
     </div>
   );
 };

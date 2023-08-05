@@ -3,11 +3,9 @@
     src: url("../../assets/fonts/RobotoSlab-VariableFont_wght.ttf");
 }
 .LandingPage{
-    background: linear-gradient(rgba(5,7,12,0.5), rgba(5,7,12,0.5)),
-    url("../../assets/imgs/ingredientes-espacio-copia-fideos.jpg");
-    background-size: cover;
+    background-color: black;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,21 +16,7 @@
     color: white;
     text-shadow: 5px -5px 2px black;
     font-size: 2.5rem;
-}
-.boton{
-    font-size: 1.3rem;
-    border-radius: 5px;
-    background-color: rgba(5,7,12,0.25);
-    backdrop-filter: blur(4px);
-    border: 1px solid white;    
-    color: white;
-    font-family:"mega";
-    cursor: pointer;
-    transition: all 200ms;
-}
-.boton:hover{
-    transform: scale(1.1) 
-
+    z-index: 50;
 }
 .text{
 font-size: 1.2rem;
@@ -52,11 +36,6 @@ right: 0;
     margin-bottom: 0.8rem;
     text-align: center;
 }
-.boton{
-    font-size: 1.25rem;
-    padding: 0.3em;
-    
-}
 }
 
 @media (min-width: 481px){
@@ -64,11 +43,6 @@ right: 0;
         font-size: 2.2rem;
         margin-top: 15.8rem;
 
-    }
-    .boton{
-        font-size: 1.5rem;
-         padding: 0.6em
-         
     }
 }
 
@@ -78,21 +52,12 @@ right: 0;
         margin-top: 13.8rem;
 
     }
-    .boton{
-        font-size: 1.9rem;
-         padding: 0.6em
-         
-    }
+    
 }
 @media (min-width: 1025px) {
     .text1{
         font-size: 3rem;
         margin-top: 14.8rem;
 
-    }
-    .boton{
-        font-size: 1.9rem;
-         padding: 0.6em
-         
     }
 }

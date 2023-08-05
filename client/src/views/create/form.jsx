@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipe } from "../../redux/actions";
-import { Link } from "react-router-dom";
 import style from "./form.module.css";
 import validate from "../../components/validate/validation";
+import { useNavigate } from "react-router-dom";
 const CreateRecipe = () => {
   const dispatch = useDispatch();
-  // const [reject, setReject] = useState(true);
+  const navigate = useNavigate()
   const diets = useSelector((state) => state.diets);
   const [input, setInput] = useState({
     name: "",
@@ -53,7 +53,6 @@ const CreateRecipe = () => {
       });
     }
   };
-  console.log(input);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postRecipe(input));
@@ -69,6 +68,7 @@ const CreateRecipe = () => {
     checkboxes.forEach((checkbox) => {
       checkbox.checked = false;
     });
+    navigate("/home");
   };
   const handleInputChange = (event) => {
     event.target.placeholder = "";
@@ -89,109 +89,99 @@ const CreateRecipe = () => {
   const handleMouseLeave6 = (event) => {
     event.target.placeholder = " Add an Image by URL on JPG. . .";
   };
-  console.log(diets);
   return (
-    <div className={style.container}>
-      <Link to="/home">
-        <button className={style.botonhome}>Home</button>
-      </Link>
-      <h1 className={style.recetacustom}>Add a custom recipe!</h1>
-      <form onSubmit={handleSubmit}>
-        <div className={style.form}>
-          <label className={style.texto}>Name: </label>
-          <input
-            placeholder=" Add a name to the recipe . . ."
-            className={style.labelPasos}
-            type="text"
+      <div className={`min-h-screen ${style.container} py-6 flex flex-col justify-center sm:py-12`}>
+	<div className="relative py-3 sm:max-w-xl sm:mx-auto">
+		<div
+			className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 rounded-3xl shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+		</div>
+		<div className="relative px-4 py-10 bg-white rounded-3xl shadow-lg sm:rounded-3xl sm:p-20">
+			<div className="max-w-md mx-auto">
+				<div>
+					<h1 className="text-2xl font-semibold">Add a custom recipe!</h1>
+				</div>
+				<div className="divide-y divide-gray-200">
+					<form onSubmit={handleSubmit} className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+						<div className="relative">
+							<input type="text"
             value={input.name}
             onChange={handleChange}
             name="name"
             onClick={handleInputChange}
-            onMouseLeave={handleMouseLeave2}
-          />
+            onMouseLeave={handleMouseLeave2} autoComplete="off"  className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"  />
+							<label htmlFor="name" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Name your recipe</label>
+              
+						</div>
           {errores.name && <p className={style.error}>{errores.name}</p>}
-          <label className={style.texto}>Summary: </label>
-          <input
-            placeholder=" Add a detailed description. . ."
-            className={style.labelPasos}
-            type="text"
+
+						<div className="relative">
+							<input type="text"
             value={input.summary}
             onChange={handleChange}
             name="summary"
             onClick={handleInputChange}
-            onMouseLeave={handleMouseLeave3}
-          />
-
-          <label className={style.texto}>Steps: </label>
-          <input
-            placeholder=" Add a step by step preparation. . ."
-            className={style.labelPasos}
-            type="text"
-            value={input.stepByStep}
-            onChange={handleChange}
-            name="stepByStep"
-            onClick={handleInputChange}
-            onMouseLeave={handleMouseLeave4}
-          />
-          <label className={style.texto}>Healthscore: </label>
-          <input
-            placeholder=" Add a 1-100 rating on how healthier it is. . ."
-            className={style.labelPasos}
-            type="text"
+            onMouseLeave={handleMouseLeave3} autoComplete="off"   className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" />
+							<label className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Describe your recipe</label>
+						</div>
+						<div className="relative">
+							<input type="text"
+           value={input.stepByStep}
+           onChange={handleChange}
+           name="stepByStep"
+           onClick={handleInputChange}
+           onMouseLeave={handleMouseLeave4} autoComplete="off"    className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" />
+							<label className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Preparation step by step</label>
+						</div>
+						<div className="relative">
+							<input type="text"
             value={input.healthScore}
             onChange={handleChange}
             name="healthScore"
             onClick={handleInputChange}
-            onMouseLeave={handleMouseLeave5}
-          />
-          {errores.healthScore && (
+            onMouseLeave={handleMouseLeave5} autoComplete="off"   className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"  />
+							<label className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Healthiness percentage</label>
+						</div>
+            {errores.healthScore && (
             <p className={style.error}>{errores.healthScore}</p>
           )}
-          <label className={style.texto}>Image: </label>
-          <input
-            placeholder=" Add an Image by URL on JPG. . ."
-            className={style.labelPasos}
-            type="text"
-            value={input.image}
-            onChange={handleChange}
-            name="image"
-            onClick={handleInputChange}
-            onMouseLeave={handleMouseLeave6}
-          />
-          {errores.image && <p className={style.error}>{errores.image}</p>}
-          <label className={style.texto12}>Diets: </label>
-          {diets.length < 11 ? (
-            <div className={style.loding}>
-              <h1>... Loading</h1>
-            </div>
-          ) : (
-            diets.map((e) => (
-              <div className={style.check}>
-                <label className={style.textBox}>{e.name}</label>
-                <input
-                  type="checkbox"
-                  onChange={handleCheck}
-                  value={e.id}
-                ></input>
+						<div className="relative">
+							<input type="text"
+                   value={input.image}
+                   onChange={handleChange}
+                   name="image"
+                   onClick={handleInputChange}
+                   onMouseLeave={handleMouseLeave6} autoComplete="off"   className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"/>
+							<label className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Add an image by URL</label>
               </div>
-            ))
-          )}
-        </div>
+              {errores.image && <p className={style.error}>{errores.image}</p>}
+                        {diets.length < 11 ? (
+                          <div className={style.loding}>
+                            <h1>... Loading</h1>
+                          </div>
+                        ) : (
+                          diets.map((e, index) => (
+                            <div key={index} className="grid grid-cols-2 mt-2 border-b-2 border-gray-300">
+                              <label className="text-gray-500 font-medium text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">{e.name}</label>
+                              <input
+                                type="checkbox"
+                                onChange={handleCheck}
+                                value={e.id}
+                                className="ml-auto"
+                              ></input>
+                            </div>
+                          ))
+                        )}
+						<div className="relative  flex justify-center">
+							<button className="bg-blue-500 text-white rounded-md px-2 py-1">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-        {errores && (errores.name || errores.healthScore || errores.image) ? (
-          <h1 className={style.errores2}>Check your errors</h1>
-        ) : errores &&
-          (input.name === "" ||
-            input.healthScore === "" ||
-            input.image === "") ? (
-          <h1 className={style.errores2}>Fill in the blanks</h1>
-        ) : (
-          <button className={style.submit} type="submit">
-            Add your recipe
-          </button>
-        )}
-      </form>
-    </div>
-  );
+);
 };
 export default CreateRecipe;
+      
