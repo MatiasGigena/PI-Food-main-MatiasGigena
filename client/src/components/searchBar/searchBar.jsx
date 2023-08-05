@@ -32,7 +32,7 @@ const SearchBar = ({ setCurrentPage }) => {
         onChange={handleChange}
         onClick={handleClick}
         onMouseLeave={handleLeave}
-        value={name} className="input input-bordered w-24 md:w-auto" />
+        value={name} className="input bg-white input-bordered w-24 md:w-auto" />
       <IconButton type="submit" onClick={handleSubmit}>
           <SearchIcon style={{ color: "white"}}/>
       </IconButton>
