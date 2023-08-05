@@ -13,7 +13,7 @@ export const ORDER_BY_HS = "ORDER_BY_HS";
 export const getRecipes = () => {
   return async function (dispatch) {
     try {
-      const apiData = await axios.get("http://localhost:3001/recipes");
+      const apiData = await axios.get("https://backend-pi-production-42dc.up.railway.app/recipes");
       const recipes = apiData.data;
       return dispatch({ type: GET_RECIPES, payload: recipes });
     } catch (error) {
@@ -25,7 +25,7 @@ export const getRecipeByName = (name) => {
   return async function (dispatch) {
     try {
       const apiData = await axios.get(
-        `http://localhost:3001/recipes?name=${name}`
+        `https://backend-pi-production-42dc.up.railway.app/recipes?name=${name}`
       );
       const recipeName = apiData.data;
       return dispatch({
@@ -67,7 +67,7 @@ export const postRecipe = (payload) => {
   return async function () {
     try {
       const apiData = await axios.post(
-        "http://localhost:3001/recipes",
+        "https://backend-pi-production-42dc.up.railway.app/recipes",
         payload
       );
       alert(apiData.data);
@@ -80,7 +80,7 @@ export const postRecipe = (payload) => {
 export const getDiets = () => {
   return async function (dispatch) {
     try {
-      const apiData = await axios.get("http://localhost:3001/diets");
+      const apiData = await axios.get("https://backend-pi-production-42dc.up.railway.app/diets");
       const diets = apiData.data;
       return dispatch({
         type: GET_DIETS,
@@ -95,7 +95,7 @@ export const getDiets = () => {
 export const getDetail = (id) => {
   return async function (dispatch) {
     try {
-      const apiData = await axios.get(`http://localhost:3001/recipes/${id}`);
+      const apiData = await axios.get(`https://backend-pi-production-42dc.up.railway.app/recipes/${id}`);
       const idea = apiData.data;
       return dispatch({
         type: GET_DETAIL,
