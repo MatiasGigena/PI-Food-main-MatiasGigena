@@ -89,7 +89,7 @@ const Home = () => {
                 <select
                   defaultValue="Alphatebical order"
                   onChange={handleOrder}
-                  className="select select-bordered w-full max-w-xs">
+                  className="select select-bordered bg-white w-full max-w-xs">
                   <option disabled>Alphatebical order</option>
                   <option value="default">Default</option>
                   <option value="A">Z-A</option>
@@ -98,7 +98,7 @@ const Home = () => {
                 <select
                   defaultValue="+ or - Healthier order"
                   onChange={handleO}
-                  className="select select-bordered w-full max-w-xs">
+                  className="select select-bordered bg-white w-full max-w-xs">
                   <option disabled>+ or - Healthier order</option>
                   <option value="default">Default</option>
                   <option value="D"> + Healthier</option>
@@ -106,7 +106,7 @@ const Home = () => {
                 </select>
                 <select
                   defaultValue="Filter by diet types"
-                  className="select select-bordered w-full max-w-xs"
+                  className="select bg-white select-bordered w-full max-w-xs"
                   onChange={handleFilterDiets}>
                   <option disabled>Filter by diet types</option>
                   <option value="default">All</option>
@@ -123,7 +123,7 @@ const Home = () => {
                 </select>
                 <select
                   defaultValue="Filter by created or existing"
-                  className="select select-bordered w-full max-w-xs"
+                  className="select bg-white select-bordered w-full max-w-xs"
                   onChange={(e) => handleFilterCreated(e)}>
                   <option disabled>Filter by created or existing</option>
                   <option value="default">All</option>
