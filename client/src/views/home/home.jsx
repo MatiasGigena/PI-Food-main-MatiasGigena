@@ -81,11 +81,10 @@ const Home = () => {
         <div className="drawer-side z-50">
           <label htmlFor="my-drawer" className="drawer-overlay z-50"></label>
           <ul className="menu p-4 w-60 sm:w-80 h-full bg-gray-200 z-50 text-base-content">
-            {/* Sidebar content here */}
             {filtros === true && (
               <div className={style.filtros}>
-                <h3 className="text-4xl flex items-end justify-between font-medium font-[Poppins]">
-                  Filters <span className=" hover:underline text-xs">clean filters</span>{" "}
+                <h3 className="text-4xl flex items-end bg-transparent justify-between font-medium font-[Poppins]">
+                  Filters <span className=" hover:underline bg-transparent text-xs">clean filters</span>{" "}
                 </h3>
                 <select
                   defaultValue="Alphatebical order"
